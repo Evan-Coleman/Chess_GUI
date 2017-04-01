@@ -1,0 +1,252 @@
+﻿<Window x:Class="Chess_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chess_GUI"
+        xmlns:local1="clr-namespace:Chess_GUI.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="750" ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <local1:BoardViewModel x:Key="BoardViewModel"></local1:BoardViewModel>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource BoardViewModel}">
+        <Grid HorizontalAlignment="Left">
+            <Viewbox>
+                <StackPanel x:Name="Board1" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">8</Label>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="A8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A8_OnClick" Content="{Binding Board.MBoard[0][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="B8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B8_OnClick" Content="{Binding Board.MBoard[0][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="C8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C8_OnClick" Content="{Binding Board.MBoard[0][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="D8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D8_OnClick" Content="{Binding Board.MBoard[0][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="E8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E8_OnClick" Content="{Binding Board.MBoard[0][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="F8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F8_OnClick" Content="{Binding Board.MBoard[0][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="G8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G8_OnClick" Content="{Binding Board.MBoard[0][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="H8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H8_OnClick" Content="{Binding Board.MBoard[0][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">7</Label>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="A7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A7_OnClick" Content="{Binding Board.MBoard[1][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="B7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B7_OnClick" Content="{Binding Board.MBoard[1][1]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessB}">                                                                                                       
+                            <Button Name="C7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C7_OnClick" Content="{Binding Board.MBoard[1][2]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessW}">                                                                                                       
+                            <Button Name="D7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D7_OnClick" Content="{Binding Board.MBoard[1][3]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessB}">                                                                                                       
+                            <Button Name="E7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E7_OnClick" Content="{Binding Board.MBoard[1][4]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessW}">                                                                                                       
+                            <Button Name="F7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F7_OnClick" Content="{Binding Board.MBoard[1][5]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessB}">                                                                                                       
+                            <Button Name="G7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G7_OnClick" Content="{Binding Board.MBoard[1][6]}"></Button>
+                        </Border>                                                                                                                                       
+                        <Border Style="{DynamicResource ChessW}">                                                                                                       
+                            <Button Name="H7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H7_OnClick" Content="{Binding Board.MBoard[1][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">6</Label>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="A6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A6_OnClick" Content="{Binding Board.MBoard[2][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="B6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B6_OnClick" Content="{Binding Board.MBoard[2][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="C6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C6_OnClick" Content="{Binding Board.MBoard[2][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="D6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D6_OnClick" Content="{Binding Board.MBoard[2][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="E6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E6_OnClick" Content="{Binding Board.MBoard[2][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="F6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F6_OnClick" Content="{Binding Board.MBoard[2][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="G6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G6_OnClick" Content="{Binding Board.MBoard[2][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="H6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H6_OnClick" Content="{Binding Board.MBoard[2][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">5</Label>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="A5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A5_OnClick" Content="{Binding Board.MBoard[3][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="B5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B5_OnClick" Content="{Binding Board.MBoard[3][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="C5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C5_OnClick" Content="{Binding Board.MBoard[3][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="D5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D5_OnClick" Content="{Binding Board.MBoard[3][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="E5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E5_OnClick" Content="{Binding Board.MBoard[3][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="F5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F5_OnClick" Content="{Binding Board.MBoard[3][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="G5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G5_OnClick" Content="{Binding Board.MBoard[3][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="H5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H5_OnClick" Content="{Binding Board.MBoard[3][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">4</Label>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="A4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A4_OnClick" Content="{Binding Board.MBoard[4][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="B4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B4_OnClick" Content="{Binding Board.MBoard[4][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="C4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C4_OnClick" Content="{Binding Board.MBoard[4][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="D4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D4_OnClick" Content="{Binding Board.MBoard[4][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="E4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E4_OnClick" Content="{Binding Board.MBoard[4][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="F4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F4_OnClick" Content="{Binding Board.MBoard[4][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="G4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G4_OnClick" Content="{Binding Board.MBoard[4][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="H4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H4_OnClick" Content="{Binding Board.MBoard[4][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">3</Label>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="A3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A3_OnClick" Content="{Binding Board.MBoard[5][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="B3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B3_OnClick" Content="{Binding Board.MBoard[5][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="C3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C3_OnClick" Content="{Binding Board.MBoard[5][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="D3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D3_OnClick" Content="{Binding Board.MBoard[5][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="E3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E3_OnClick" Content="{Binding Board.MBoard[5][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="F3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F3_OnClick" Content="{Binding Board.MBoard[5][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="G3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G3_OnClick" Content="{Binding Board.MBoard[5][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="H3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H3_OnClick" Content="{Binding Board.MBoard[5][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">2</Label>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="A2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A2_OnClick" Content="{Binding Board.MBoard[6][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="B2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B2_OnClick" Content="{Binding Board.MBoard[6][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="C2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C2_OnClick" Content="{Binding Board.MBoard[6][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="D2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D2_OnClick" Content="{Binding Board.MBoard[6][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="E2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E2_OnClick" Content="{Binding Board.MBoard[6][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="F2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F2_OnClick" Content="{Binding Board.MBoard[6][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="G2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G2_OnClick" Content="{Binding Board.MBoard[6][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="H2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H2_OnClick" Content="{Binding Board.MBoard[6][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="0,0,7,0">1</Label>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="A1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A1_OnClick" Content="{Binding Board.MBoard[7][0]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="B1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B1_OnClick" Content="{Binding Board.MBoard[7][1]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="C1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C1_OnClick" Content="{Binding Board.MBoard[7][2]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="D1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D1_OnClick" Content="{Binding Board.MBoard[7][3]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="E1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E1_OnClick" Content="{Binding Board.MBoard[7][4]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="F1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F1_OnClick" Content="{Binding Board.MBoard[7][5]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessB}">
+                            <Button Name="G1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G1_OnClick" Content="{Binding Board.MBoard[7][6]}"></Button>
+                        </Border>
+                        <Border Style="{DynamicResource ChessW}">
+                            <Button Name="H1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H1_OnClick" Content="{Binding Board.MBoard[7][7]}"></Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="48" Margin="57,0,20,0">A</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >B</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >C</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >D</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >E</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >F</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >G</Label>
+                        <Label FontSize="48" Margin="18,0,20,0" >H</Label>
+                    </StackPanel>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+
+
+</Window>
+
