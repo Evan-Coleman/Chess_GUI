@@ -4,10 +4,10 @@ Adding a WPF MVVM UI to my old chess game.
 TODO:
 [x]     Implement ICommand interface
 [x]     Wire up a button to test commands
-[]      Wire up all buttons to use the move command
+[x]      Wire up all buttons to use the move command
 []      Remove Click event from xaml && main window code
 []      Implement way to highlight currently selected piece
-[]      Add a move string to Move command which will attempt a move when Length==4
+[x]      Add a move string to Move command which will attempt a move when Length==4
 []      Migrate piece move logic to new project
 []      Refactor piece logic
 []      Implement promotion dialog && check promotion logic against chess rules

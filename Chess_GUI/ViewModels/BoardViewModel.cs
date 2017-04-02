@@ -13,18 +13,20 @@ namespace Chess_GUI.ViewModels
 {
     internal class BoardViewModel
     {
-
+        private string moveText;
         public BoardViewModel()
         {
             Board = new Board();
+            moveText = "";
 
             MyBoard = new ObservableCollection<Board>()
             {
                 Board
-            };
+    };
 
             var spaces = new List<char>();
             Board.MBoard = new List<List<char>>();
+
 
             for (var i = 0; i < 8; i++)
             {
@@ -63,7 +65,20 @@ namespace Chess_GUI.ViewModels
 
         public void Move(object message)
         {
-            MessageBox.Show("HELLO!");
+            moveText += (string)message;
+
+            if (ValidInputCheck(moveText))
+            {
+                MessageBox.Show("Valid move"); // replace with piece move validation
+                moveText = "";
+                return;
+            }
+
+            if (moveText.Length >= 4)
+            {
+                moveText = "";
+            }
+
         }
 
         public bool Canexecute(object message)
@@ -71,37 +86,28 @@ namespace Chess_GUI.ViewModels
             return true;
         }
         // Checks to see if the input is formatted correctly
-        public bool ValidInputCheck(object message)
+        public bool ValidInputCheck(string opt)
         {
-
-            if (message == null)
-            {
-                return false;
-            }
-            var opt = (string)message;
             opt = opt.ToLower();
 
             if (opt.Length != 4) // a valid move will always be 4 chars
                 return false;
 
-            if (opt[1] == opt[3] && opt[2] == opt[4])   // can't move to the same spot
+            if (opt[0] == opt[2] && opt[1] == opt[3])   // can't move to the same spot
                 return false;
 
-            const string m = "m";
             const string nums = "12345678";
             const string lets = "abcdefgh";
             var j = 0;
-            if (opt[0] != m[0])
-                return false;
             for (var i = 0; i < 8; i++)
             {
-                if (opt[1] == lets[i])
+                if (opt[0] == lets[i])
                     j++;
-                if (opt[3] == lets[i])
+                if (opt[2] == lets[i])
                     j++;
-                if (opt[2] == nums[i])
+                if (opt[1] == nums[i])
                     j++;
-                if (opt[4] == nums[i])
+                if (opt[3] == nums[i])
                     j++;
             }
             return j == 4;
