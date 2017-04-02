@@ -13,6 +13,36 @@ namespace Chess_GUI.ViewModels
         public BoardViewModel()
         {
             Board = new Board();
+
+
+            var spaces = new List<char>();
+            Board.MBoard = new List<List<char>>();
+
+            for (var i = 0; i < 8; i++)
+            {
+                spaces.Add(' ');
+            }
+
+            for (int i = 0; i < 8; i++)
+            {       // sets board to all zeros in order to show an empty board
+                Board.MBoard.Add(spaces);
+                //spaces.Clear();
+                spaces = new List<char>();
+                for (var j = 0; j < 8; j++)
+                {
+                    spaces.Add(' ');
+                }
+            }
+
+            for (var i = 0; i < 8; i++)
+            {
+                Board.MBoard[0][i] = Board.BPiece[i]; //
+                Board.MBoard[1][i] = Board.BPiece[8];  //	these 4 set the peices
+                Board.MBoard[6][i] = Board.WPiece[8];
+                Board.MBoard[7][i] = Board.WPiece[i]; //
+
+            }
+
         }
 
         public Board Board { get; set; }
@@ -21,9 +51,15 @@ namespace Chess_GUI.ViewModels
 
 
 
+        public void poke()
+        {
+            Board.MBoard[0][0] = 'a';
+        }
+
         // Checks to see if the input is formatted correctly
         public int ValidInputCheck(string opt)
         {
+            opt = opt.ToLower();
 
             if (opt[1] == opt[3] && opt[2] == opt[4])   // can't move to the same spot
                 return 0;
