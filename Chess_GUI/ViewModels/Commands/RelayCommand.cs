@@ -12,6 +12,7 @@ namespace Chess_GUI.ViewModels.Commands
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
 
+        // Main constructor
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
@@ -23,10 +24,12 @@ namespace Chess_GUI.ViewModels.Commands
             _canExecute = canExecute;
         }
 
+        // Constructor used if no info about can execute is passed
         public RelayCommand(Action<object> execute) : this(execute, null)
         {
 
         }
+
 
         public bool CanExecute(object parameter)
         {

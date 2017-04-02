@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F8C06706-D392-4AA7-9079-8B8259908583}</ProjectGuid>
+    <ProjectGuid>{6B124079-2588-4528-B60D-96B420D94F95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Chess_GUI.Tests</RootNamespace>

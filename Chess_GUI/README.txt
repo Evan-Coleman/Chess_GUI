@@ -1,6 +1,24 @@
 ﻿# Chess_GUI
 Adding a WPF MVVM UI to my old chess game.
 
+Upcoming design choices:
+Old chess game wasn't designed with OOP in mind, so when I inport the logic I'll need to remedy that.
+
+Design (Tenative, 1st iteration):
+Board - WPieces, BPieces, MBoard
+	(1) BoardViewModel - Board
+					(*) Views
+	(*) Space - Name
+			(*) Piece - Text, LegalMove()
+					(*) Pawn
+					(*) Rook
+					(*) Knight
+					(*) Biship
+					(*) King
+					(*) Queen
+
+
+
 TODO:
 [x]     Implement ICommand interface
 [x]     Wire up a button to test commands

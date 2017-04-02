@@ -13,7 +13,9 @@ namespace Chess_GUI.Models
 
     public class Board
     {
+        // Unicode characters for White chess pieces
         public char[] WPiece { get; } = { '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖', '♙' };
+        // Unicode characters for Black chess pieces
         public char[] BPiece { get; } = { '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜', '♟' };
 
         public List<List<char>> MBoard { get; set; }
