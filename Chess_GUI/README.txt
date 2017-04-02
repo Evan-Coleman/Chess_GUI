@@ -23,19 +23,20 @@ TODO:
 [x]     Implement ICommand interface
 [x]     Wire up a button to test commands
 [x]     Wire up all buttons to use the move command
-[]      Remove Click event from xaml && main window code
+[]      Remove Click event from xaml && main window code !-Holding off to do this incase I need them-!
 [x]     Implement way to highlight currently selected piece
 [x]     Add a move string to Move command which will attempt a move when Length==4
-[]		Add button to undo selection
+[x]		Add button to undo selection
 []      Migrate piece move logic to new project
 []      Refactor piece logic
 []      Implement promotion dialog && check promotion logic against chess rules
 []      Implement move list
-[]      Add reset button
+[1/2]   Add reset button (Added, but not functional yet)
 []      Add turn checking && prevent player from moving opponents pieces
 []      Implement win dialog
 
-WISHLIST:
+WISHLIST (in ascending order of difficulty):
+[]		Make the GUI pretty (better color scheme)
 []      Check chess rules for something I missed
 []      Add play vs computer
 []      Add play vs friend on network
