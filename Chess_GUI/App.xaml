@@ -19,6 +19,9 @@
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
             </Style>
+            <Style x:Key="GButtons"  TargetType="Button">
+                <Setter Property="Background" Value="LavenderBlush"></Setter>
+            </Style>
         </ResourceDictionary>
 
         

@@ -13,6 +13,26 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource BoardViewModel}">
+        <Grid HorizontalAlignment="Right">
+            <Viewbox>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
+                        <Border>
+                            <Button Name="UndoButton" Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}"  Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=UndoButton, Path=Name}">Undo Selection</Button>
+                        </Border>
+                        <Border>
+
+                        </Border>
+                        <Border>
+                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Reset Game</Button>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Height="200" Width="81" TextAlignment="Center" TextWrapping="Wrap" Text="as"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
         <Grid HorizontalAlignment="Left">
             <Viewbox>
                 <StackPanel x:Name="Board1" Orientation="Vertical">
