@@ -54,6 +54,7 @@ namespace Chess_GUI.ViewModels
             }
 
             MoveCommand = new RelayCommand(Move, Canexecute);
+            //MoveCommand = new RelayCommand(Move);
 
         }
 
@@ -83,8 +84,18 @@ namespace Chess_GUI.ViewModels
 
         public bool Canexecute(object message)
         {
+            if (message == null)
+            {
+                return true;
+            }
+            else if ((string)message == moveText)
+            {
+                return false;
+            }
+
             return true;
         }
+
         // Checks to see if the input is formatted correctly
         public bool ValidInputCheck(string opt)
         {
