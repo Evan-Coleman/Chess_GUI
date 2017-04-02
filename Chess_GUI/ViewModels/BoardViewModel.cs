@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using Chess_GUI.Models;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
 {
-    internal class BoardViewModel
+    public class BoardViewModel
     {
-        private string moveText;
+        private string _moveText;
         public BoardViewModel()
         {
             Board = new Board();
-            moveText = "";
+            _moveText = "";
 
             MyBoard = new ObservableCollection<Board>()
             {
@@ -66,18 +61,18 @@ namespace Chess_GUI.ViewModels
 
         public void Move(object message)
         {
-            moveText += (string)message;
+            _moveText += (string)message;
 
-            if (ValidInputCheck(moveText))
+            if (ValidInputCheck(_moveText))
             {
-                MessageBox.Show("Valid move"); // replace with piece move validation
-                moveText = "";
+                // replace with piece move validation
+                _moveText = "";
                 return;
             }
 
-            if (moveText.Length >= 4)
+            if (_moveText.Length >= 4)
             {
-                moveText = "";
+                _moveText = "";
             }
 
         }
@@ -88,7 +83,7 @@ namespace Chess_GUI.ViewModels
             {
                 return true;
             }
-            else if ((string)message == moveText)
+            else if ((string)message == _moveText)
             {
                 return false;
             }
