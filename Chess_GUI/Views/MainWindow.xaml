@@ -19,7 +19,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="48" Margin="0,0,7,0">8</Label>
                         <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A8_OnClick" Content="{Binding Board.MBoard[0][0]}"></Button>
+                            <Button Name="A8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A8, Path=Name}" Content="{Binding Board.MBoard[0][0]}"></Button>
                         </Border>
                         <Border Style="{DynamicResource ChessB}">
                             <Button Name="B8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B8_OnClick" Content="{Binding Board.MBoard[0][1]}"></Button>
