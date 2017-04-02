@@ -16,14 +16,23 @@ TODO:
 []      Add a move string to Move command which will attempt a move when Length==4
 
 []      Migrate piece move logic to new project
+
 []      Refactor piece logic
+
 []      Implement promotion dialog && check promotion logic against chess rules
+
 []      Implement move list
+
 []      Add reset button
+
 []      Add turn checking && prevent player from moving opponents pieces
+
 []      Implement win dialog
 
 WISHLIST:
+
 []      Check chess rules for something I missed
+
 []      Add play vs computer
+
 []      Add play vs friend on network
