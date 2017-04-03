@@ -31,7 +31,7 @@ namespace Chess_GUI.ViewModels
             // Making all rows spaces for initial state of board
             for (var i = 0; i < 8; i++)
             {
-                spaces.Add(' ');
+                spaces.Add('\0');
             }
 
             for (var i = 0; i < 8; i++)
@@ -41,7 +41,7 @@ namespace Chess_GUI.ViewModels
                 spaces = new List<char>();
                 for (var j = 0; j < 8; j++)
                 {
-                    spaces.Add(' ');
+                    spaces.Add('\0');
                 }
             }
 

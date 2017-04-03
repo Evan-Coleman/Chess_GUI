@@ -65,6 +65,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\Space.cs" />
+    <Compile Include="Models\Piece.cs" />
+    <Compile Include="Models\Pieces\King.cs" />
+    <Compile Include="Models\Pieces\Knight.cs" />
+    <Compile Include="Models\Pieces\Queen.cs" />
+    <Compile Include="Models\Pieces\Bishop.cs" />
+    <Compile Include="Models\Pieces\Rook.cs" />
+    <Compile Include="Models\Pieces\Pawn.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BoardViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
