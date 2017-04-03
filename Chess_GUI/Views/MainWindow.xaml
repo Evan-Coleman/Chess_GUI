@@ -21,14 +21,14 @@
                             <Button Name="UndoButton" Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}"  Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=UndoButton, Path=Name}">Undo Selection</Button>
                         </Border>
                         <Border>
-
+                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Reset Game</Button>
                         </Border>
                         <Border>
-                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Reset Game</Button>
+                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Turn counter</Button>
                         </Border>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Height="200" Width="81" TextAlignment="Center" TextWrapping="Wrap" Text="as"></TextBlock>
+                        <TextBlock Height="200" Width="86" TextAlignment="Center" TextWrapping="Wrap" Text="as"></TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Viewbox>

@@ -103,14 +103,14 @@ namespace Chess_GUI.ViewModels
         }
 
         // Checks to see if the input is formatted correctly
-        public bool ValidInputCheck(string opt)
+        public bool ValidInputCheck(string moveText)
         {
-            opt = opt.ToLower();
+            moveText = moveText.ToLower();
 
-            if (opt.Length != 4) // a valid move will always be 4 chars
+            if (moveText.Length != 4) // a valid move will always be 4 chars
                 return false;
 
-            if (opt[0] == opt[2] && opt[1] == opt[3])   // can't move to the same spot
+            if (moveText[0] == moveText[2] && moveText[1] == moveText[3])   // can't move to the same spot
                 return false;
 
             const string nums = "12345678"; // a valid move will always contain these numbers
@@ -118,13 +118,13 @@ namespace Chess_GUI.ViewModels
             var j = 0;
             for (var i = 0; i < 8; i++)
             {
-                if (opt[0] == lets[i])
+                if (moveText[0] == lets[i])
                     j++;
-                if (opt[2] == lets[i])
+                if (moveText[2] == lets[i])
                     j++;
-                if (opt[1] == nums[i])
+                if (moveText[1] == nums[i])
                     j++;
-                if (opt[3] == nums[i])
+                if (moveText[3] == nums[i])
                     j++;
             }
             return j == 4;
