@@ -18,6 +18,17 @@ Board - WPieces, BPieces, MBoard
 					(*) Queen
 
 
+Legalmove refactors for tomorrow:
+	LegalMove signature
+	Which(x) to isBlack
+	Take your own piece code chunk to work with the bool isBlack
+	before return if move if successful put
+		new EmptyPiece in source coords
+		new (x) in dest coords
+	return bools (research why return 2 on king though... might need to do something about that)
+
+
+
 
 TODO:
 [x]     Implement ICommand interface
