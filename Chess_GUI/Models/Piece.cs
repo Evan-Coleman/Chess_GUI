@@ -10,12 +10,9 @@ namespace Chess_GUI.Models
 {
     public abstract class Piece
     {
-        public Piece(Board InternalBoard, int x1, int y1, int x2, int y2)
+        protected Piece(bool isBlack)
         {
-            _board = InternalBoard;
-            _x1 = x1;
-            _y1 = y1;
-            _x2 = x2;
+            _isBlack = isBlack;
         }
 
         // Name will contain the piece's unicode character
@@ -36,18 +33,10 @@ namespace Chess_GUI.Models
         private string knight = "♞♘";
         private string pawn = "♟♙";
 
-        // Initial coords
-        private int _x1;
-        private int _y1;
+        // True if piece is black
+        private bool _isBlack;
 
-        // Proposed final coords
-        private int _x2;
-        private int _y2;
-
-        // Board to be used to check valid moves internally
-        private Board _board;
-
-        public abstract bool LegalMove();
+        public abstract bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY);
 
     }
 }

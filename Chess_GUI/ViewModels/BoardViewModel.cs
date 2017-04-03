@@ -49,10 +49,10 @@ namespace Chess_GUI.ViewModels
             // Places pieces on the board
             for (var i = 0; i < 8; i++)
             {
-                Board.MBoard[0][i] = Board.BPiece[i]; //
-                Board.MBoard[1][i] = Board.BPiece[8];  //	these 4 set the peices
-                Board.MBoard[6][i] = Board.WPiece[8];
-                Board.MBoard[7][i] = Board.WPiece[i]; //
+                Board.MBoard[0][i] = Board.MPiece[i]; //
+                Board.MBoard[1][i] = Board.MPiece[8];  //	these 4 set the peices
+                Board.MBoard[6][i] = Board.MPiece[8];
+                Board.MBoard[7][i] = Board.MPiece[i]; //
 
             }
 

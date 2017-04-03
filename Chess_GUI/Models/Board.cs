@@ -25,7 +25,7 @@ namespace Chess_GUI.Models
         private static Pawn pawn;
 
 
-        public Piece[] WPiece = { rook, knight, bishop, queen, king, bishop, knight, rook, pawn };
+        public Piece[] MPiece = { rook, knight, bishop, queen, king, bishop, knight, rook, pawn };
 
         // Unicode characters for Black chess pieces
         //public char[] BPiece { get; } = { '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜', '♟' };
