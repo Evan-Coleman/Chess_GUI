@@ -17,15 +17,15 @@ namespace Chess_GUI.Models
         // Unicode characters for White chess pieces
         //public char[] WPiece { get; } = { '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖', '♙' };
 
-        private static Rook rook;
-        private static Knight knight;
-        private static Bishop bishop;
-        private static Queen queen;
-        private static King king;
-        private static Pawn pawn;
-
-
-        public Piece[] MPiece = { rook, knight, bishop, queen, king, bishop, knight, rook, pawn };
+        //        private static Rook rook;
+        //        private static Knight knight;
+        //        private static Bishop bishop;
+        //        private static Queen queen;
+        //        private static King king;
+        //        private static Pawn pawn;
+        //
+        //
+        //        public Piece[] MPiece = { rook, knight, bishop, queen, king, bishop, knight, rook, pawn };
 
         // Unicode characters for Black chess pieces
         //public char[] BPiece { get; } = { '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜', '♟' };

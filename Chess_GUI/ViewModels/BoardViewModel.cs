@@ -32,7 +32,7 @@ namespace Chess_GUI.ViewModels
             // Making all rows spaces for initial state of board
             for (var i = 0; i < 8; i++)
             {
-                spaces.Add(new EmptyPiece());
+                spaces.Add(new EmptyPiece(true));
             }
 
             for (var i = 0; i < 8; i++)
@@ -42,19 +42,46 @@ namespace Chess_GUI.ViewModels
                 spaces = new List<Piece>();
                 for (var j = 0; j < 8; j++)
                 {
-                    spaces.Add(new EmptyPiece());
+                    spaces.Add(new EmptyPiece(true));
                 }
             }
 
-            // Places pieces on the board
-            for (var i = 0; i < 8; i++)
-            {
-                Board.MBoard[0][i] = Board.MPiece[i]; //
-                Board.MBoard[1][i] = Board.MPiece[8];  //	these 4 set the peices
-                Board.MBoard[6][i] = Board.MPiece[8];
-                Board.MBoard[7][i] = Board.MPiece[i]; //
+            // Initialized board with correct Pieces
+            Board.MBoard[0][0] = new Rook(true);
+            Board.MBoard[0][1] = new Knight(true);
+            Board.MBoard[0][2] = new Bishop(true);
+            Board.MBoard[0][3] = new Queen(true);
+            Board.MBoard[0][4] = new King(true);
+            Board.MBoard[0][5] = new Bishop(true);
+            Board.MBoard[0][6] = new Knight(true);
+            Board.MBoard[0][7] = new Rook(true);
 
-            }
+            Board.MBoard[1][0] = new Pawn(true);
+            Board.MBoard[1][1] = new Pawn(true);
+            Board.MBoard[1][2] = new Pawn(true);
+            Board.MBoard[1][3] = new Pawn(true);
+            Board.MBoard[1][4] = new Pawn(true);
+            Board.MBoard[1][5] = new Pawn(true);
+            Board.MBoard[1][6] = new Pawn(true);
+            Board.MBoard[1][7] = new Pawn(true);
+
+            Board.MBoard[6][0] = new Pawn(false);
+            Board.MBoard[6][1] = new Pawn(false);
+            Board.MBoard[6][2] = new Pawn(false);
+            Board.MBoard[6][3] = new Pawn(false);
+            Board.MBoard[6][4] = new Pawn(false);
+            Board.MBoard[6][5] = new Pawn(false);
+            Board.MBoard[6][6] = new Pawn(false);
+            Board.MBoard[6][7] = new Pawn(false);
+
+            Board.MBoard[7][0] = new Rook(false);
+            Board.MBoard[7][1] = new Knight(false);
+            Board.MBoard[7][2] = new Bishop(false);
+            Board.MBoard[7][3] = new Queen(false);
+            Board.MBoard[7][4] = new King(false);
+            Board.MBoard[7][5] = new Bishop(false);
+            Board.MBoard[7][6] = new Knight(false);
+            Board.MBoard[7][7] = new Rook(false);
 
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);

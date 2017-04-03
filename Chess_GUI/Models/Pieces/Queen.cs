@@ -8,5 +8,13 @@ namespace Chess_GUI.Models.Pieces
 {
     public class Queen : Piece
     {
+        public Queen(bool isBlack) : base(isBlack)
+        {
+        }
+
+        public override bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

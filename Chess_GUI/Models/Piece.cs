@@ -16,25 +16,25 @@ namespace Chess_GUI.Models
         }
 
         // Name will contain the piece's unicode character
-        public string Name { get; set; }
+        public char Name { get; set; }
 
         // Unicode characters for White chess pieces
-        private string WPiece = "♔♕♖♗♘♙";
+        public string WPiece = "♔♕♖♗♘♙";
         // Unicode characters for Black chess pieces
-        private string BPiece = "♚♛♜♝♞♟";
+        public string BPiece = "♚♛♜♝♞♟";
 
         // Used to check if empty space
-        private string zero = "\0";
+        public string zero = "\0";
 
-        private string king = "♚♔";
-        private string queen = "♛♕";
-        private string rook = "♜♖";
-        private string bishop = "♝♗";
-        private string knight = "♞♘";
-        private string pawn = "♟♙";
+        public string king = "♚♔";
+        public string queen = "♛♕";
+        public string rook = "♜♖";
+        public string bishop = "♝♗";
+        public string knight = "♞♘";
+        public string pawn = "♟♙";
 
         // True if piece is black
-        private bool _isBlack;
+        public bool _isBlack;
 
         public abstract bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY);
 
