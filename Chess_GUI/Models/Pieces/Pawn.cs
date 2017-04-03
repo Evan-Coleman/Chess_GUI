@@ -10,6 +10,7 @@ namespace Chess_GUI.Models.Pieces
     {
         public Pawn(bool isBlack) : base(isBlack)
         {
+            base.Name = isBlack ? base.pawn[0] : base.pawn[1];
         }
 
 

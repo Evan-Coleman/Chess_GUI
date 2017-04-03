@@ -12,6 +12,7 @@ namespace Chess_GUI.Models.Pieces
     {
         public Rook(bool isBlack) : base(isBlack)
         {
+            base.Name = isBlack ? base.rook[0] : base.rook[1];
         }
 
         public override bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY)
