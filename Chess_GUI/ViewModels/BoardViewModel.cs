@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using Chess_GUI.Models;
+using Chess_GUI.Models.Pieces;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
@@ -23,25 +24,25 @@ namespace Chess_GUI.ViewModels
     };
 
             // spaces is the row of the board
-            var spaces = new List<char>();
+            var spaces = new List<Piece>();
 
             // Initializes a new board to be populated
-            Board.MBoard = new List<List<char>>();
+            Board.MBoard = new List<List<Piece>>();
 
             // Making all rows spaces for initial state of board
             for (var i = 0; i < 8; i++)
             {
-                spaces.Add('\0');
+                spaces.Add(new EmptyPiece());
             }
 
             for (var i = 0; i < 8; i++)
             {       // sets board to all spaces in order to show an empty board
                 Board.MBoard.Add(spaces);
                 //spaces.Clear();
-                spaces = new List<char>();
+                spaces = new List<Piece>();
                 for (var j = 0; j < 8; j++)
                 {
-                    spaces.Add('\0');
+                    spaces.Add(new EmptyPiece());
                 }
             }
 

@@ -47,7 +47,7 @@ namespace Chess_GUI.Models
         // Board to be used to check valid moves internally
         private Board _board;
 
-        public abstract bool ValidMove();
+        public abstract bool LegalMove();
 
     }
 }
