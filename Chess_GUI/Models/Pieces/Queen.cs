@@ -13,7 +13,7 @@ namespace Chess_GUI.Models.Pieces
             base.Name = isBlack ? base.queen[0] : base.queen[1];
         }
 
-        public override bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY)
+        public override bool LegalMove(List<List<Piece>> InternalBoard, int initalX, int initialY, int targetX, int targetY)
         {
             throw new NotImplementedException();
         }

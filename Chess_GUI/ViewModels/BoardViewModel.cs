@@ -17,11 +17,11 @@ namespace Chess_GUI.ViewModels
             Board = new Board();
             _moveText = "";
 
-            // Not used yet, remove if never used
-            MyBoard = new ObservableCollection<Board>()
-            {
-                Board
-    };
+            //            // Not used yet, remove if never used
+            //            MyBoard = new ObservableCollection<Board>()
+            //            {
+            //                Board
+            //    };
 
             // spaces is the row of the board
             var spaces = new List<Piece>();
@@ -89,7 +89,7 @@ namespace Chess_GUI.ViewModels
         }
 
         // Not using yet, check
-        public ObservableCollection<Board> MyBoard { get; private set; }
+        //public ObservableCollection<Board> MyBoard { get; private set; }
 
         public RelayCommand MoveCommand { get; private set; }
 
@@ -101,7 +101,7 @@ namespace Chess_GUI.ViewModels
         {
             _moveText += (string)message;
 
-            if (ValidInputCheck(_moveText))
+            if (Move(_moveText))
             {
                 // replace with piece move validation
                 _moveText = "";
@@ -131,7 +131,7 @@ namespace Chess_GUI.ViewModels
         }
 
         // Checks to see if the input is formatted correctly
-        public bool ValidInputCheck(string moveText)
+        public bool Move(string moveText)
         {
             moveText = moveText.ToLower();
 

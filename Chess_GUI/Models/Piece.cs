@@ -12,31 +12,31 @@ namespace Chess_GUI.Models
     {
         protected Piece(bool isBlack)
         {
-            _isBlack = isBlack;
+            IsBlack = isBlack;
         }
 
         // Name will contain the piece's unicode character
         public char Name { get; set; }
 
         // Unicode characters for White chess pieces
-        public string WPiece = "♔♕♖♗♘♙";
+        protected string WPiece = "♔♕♖♗♘♙";
         // Unicode characters for Black chess pieces
-        public string BPiece = "♚♛♜♝♞♟";
+        protected string BPiece = "♚♛♜♝♞♟";
 
         // Used to check if empty space
-        public string zero = "\0";
+        protected string zero = "\0";
 
-        public string king = "♚♔";
-        public string queen = "♛♕";
-        public string rook = "♜♖";
-        public string bishop = "♝♗";
-        public string knight = "♞♘";
-        public string pawn = "♟♙";
+        protected string king = "♚♔";
+        protected string queen = "♛♕";
+        protected string rook = "♜♖";
+        protected string bishop = "♝♗";
+        protected string knight = "♞♘";
+        protected string pawn = "♟♙";
 
         // True if piece is black
-        public bool _isBlack;
+        internal bool IsBlack;
 
-        public abstract bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY);
+        public abstract bool LegalMove(List<List<Piece>> internalBoard, int initalX, int initialY, int targetX, int targetY);
 
     }
 }

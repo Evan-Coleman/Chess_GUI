@@ -14,7 +14,7 @@ namespace Chess_GUI.Models.Pieces
         }
 
 
-        public override bool LegalMove(Board InternalBoard, int initalX, int initialY, int targetX, int targetY)
+        public override bool LegalMove(List<List<Piece>> InternalBoard, int initalX, int initialY, int targetX, int targetY)
         {
             throw new NotImplementedException();
         }
