@@ -24,19 +24,19 @@ namespace Chess_GUI.Models
         protected string BPiece = "♚♛♜♝♞♟";
 
         // Used to check if empty space
-        protected string zero = "\0";
+        protected string Zero = "\0";
 
-        protected string king = "♚♔";
-        protected string queen = "♛♕";
-        protected string rook = "♜♖";
-        protected string bishop = "♝♗";
-        protected string knight = "♞♘";
-        protected string pawn = "♟♙";
+        protected string King = "♚♔";
+        protected string Queen = "♛♕";
+        protected string Rook = "♜♖";
+        protected string Bishop = "♝♗";
+        protected string Knight = "♞♘";
+        protected string Pawn = "♟♙";
 
         // True if piece is black
         internal bool IsBlack;
 
-        public abstract bool LegalMove(List<List<Piece>> internalBoard, int initalX, int initialY, int targetX, int targetY);
+        public abstract int LegalMove(List<List<Piece>> internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn);
 
     }
 }

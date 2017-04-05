@@ -66,7 +66,6 @@
     </Compile>
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Pieces\EmptyPiece.cs" />
-    <Compile Include="Models\Space.cs" />
     <Compile Include="Models\Piece.cs" />
     <Compile Include="Models\Pieces\King.cs" />
     <Compile Include="Models\Pieces\Knight.cs" />
@@ -100,6 +99,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Chess_GUI.ViewModels.BoardViewModel.datasource" />
     <None Include="Properties\DataSources\MainWindow.datasource" />

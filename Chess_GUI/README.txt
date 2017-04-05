@@ -1,9 +1,6 @@
 ﻿# Chess_GUI
 Adding a WPF MVVM UI to my old chess game.
 
-Upcoming design choices:
-Old chess game wasn't designed with OOP in mind, so when I inport the logic I'll need to remedy that.
-
 Design (Tenative, 1st iteration):
 Board - WPieces, BPieces, MBoard
 	(1) BoardViewModel - Board
@@ -16,6 +13,9 @@ Board - WPieces, BPieces, MBoard
 					(*) Biship
 					(*) King
 					(*) Queen
+
+Notes:
+Added a prop IsBlacksTurn, sets to true, so black always start, will need to add checking color into input validation
 
 
 Legalmove refactors for tomorrow:

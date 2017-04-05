@@ -17,14 +17,15 @@ namespace Chess_GUI.Tests
         {
             var target = new BoardViewModel();
 
-            // Valid move consists of a (char,int,char,int)
-            Assert.IsTrue(target.Move("a2a4"));
+
+            // Valid.ValidInputCheck consists of a (char,int,char,int)
+            Assert.IsTrue(target.ValidInputCheck("a2a4"));
 
             // Lower bound test
-            Assert.IsTrue(target.Move("a1a2"));
+            Assert.IsTrue(target.ValidInputCheck("a1a2"));
 
             // Upper bound test
-            Assert.IsTrue(target.Move("h8h7"));
+            Assert.IsTrue(target.ValidInputCheck("h8h7"));
         }
 
         [TestMethod]
@@ -33,32 +34,32 @@ namespace Chess_GUI.Tests
             var target = new BoardViewModel();
 
             // Paramaters must be (char,int,char,int)
-            Assert.IsFalse(target.Move("aaaa"));
-            Assert.IsFalse(target.Move("1234"));
-            Assert.IsFalse(target.Move("123d"));
-            Assert.IsFalse(target.Move("12d1"));
-            Assert.IsFalse(target.Move("1d11"));
-            Assert.IsFalse(target.Move("d111"));
-            Assert.IsFalse(target.Move("dd11"));
-            Assert.IsFalse(target.Move("1dd1"));
-            Assert.IsFalse(target.Move("11dd"));
+            Assert.IsFalse(target.ValidInputCheck("aaaa"));
+            Assert.IsFalse(target.ValidInputCheck("1234"));
+            Assert.IsFalse(target.ValidInputCheck("123d"));
+            Assert.IsFalse(target.ValidInputCheck("12d1"));
+            Assert.IsFalse(target.ValidInputCheck("1d11"));
+            Assert.IsFalse(target.ValidInputCheck("d111"));
+            Assert.IsFalse(target.ValidInputCheck("dd11"));
+            Assert.IsFalse(target.ValidInputCheck("1dd1"));
+            Assert.IsFalse(target.ValidInputCheck("11dd"));
 
-            // Valid move's chars can only consist of letters up to the letter "H"
-            Assert.IsFalse(target.Move("z1z2"));
-            Assert.IsFalse(target.Move("z1a2"));
-            Assert.IsFalse(target.Move("i1a2"));
+            // Valid.ValidInputCheck's chars can only consist of letters up to the letter "H"
+            Assert.IsFalse(target.ValidInputCheck("z1z2"));
+            Assert.IsFalse(target.ValidInputCheck("z1a2"));
+            Assert.IsFalse(target.ValidInputCheck("i1a2"));
 
-            // Valid move's ints can only consist of numbers from 1 to 8
-            Assert.IsFalse(target.Move("a1a9"));
-            Assert.IsFalse(target.Move("a9a1"));
-            Assert.IsFalse(target.Move("a9a9"));
-            Assert.IsFalse(target.Move("a9a0"));
-            Assert.IsFalse(target.Move("a0a9"));
-            Assert.IsFalse(target.Move("a0a0"));
+            // Valid.ValidInputCheck's ints can only consist of numbers from 1 to 8
+            Assert.IsFalse(target.ValidInputCheck("a1a9"));
+            Assert.IsFalse(target.ValidInputCheck("a9a1"));
+            Assert.IsFalse(target.ValidInputCheck("a9a9"));
+            Assert.IsFalse(target.ValidInputCheck("a9a0"));
+            Assert.IsFalse(target.ValidInputCheck("a0a9"));
+            Assert.IsFalse(target.ValidInputCheck("a0a0"));
 
-            // Valid move has a length of 4
-            Assert.IsFalse(target.Move("a1a"));
-            Assert.IsFalse(target.Move("a1a2a"));
+            // Valid.ValidInputCheck has a length of 4
+            Assert.IsFalse(target.ValidInputCheck("a1a"));
+            Assert.IsFalse(target.ValidInputCheck("a1a2a"));
 
         }
 

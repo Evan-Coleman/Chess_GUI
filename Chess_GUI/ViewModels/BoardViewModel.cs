@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Chess_GUI.Models;
@@ -11,9 +12,11 @@ namespace Chess_GUI.ViewModels
     {
         // A string that gets built from button clicks on the board
         private string _moveText;
+        public bool IsBlacksTurn { get; set; }
 
         public BoardViewModel()
         {
+            IsBlacksTurn = true;
             Board = new Board();
             _moveText = "";
 
@@ -101,9 +104,33 @@ namespace Chess_GUI.ViewModels
         {
             _moveText += (string)message;
 
-            if (Move(_moveText))
+
+            if (ValidInputCheck(_moveText))
             {
-                // replace with piece move validation
+                // Converts input to valid Column/Row indices
+                int sourceColumn = (int)_moveText[0] - 65;
+                int sourceRow = 7 - ((int)_moveText[1] - 49);
+                int destColumn = _moveText[2] - 65;
+                int destRow = 7 - ((int)_moveText[3] - 49);
+
+                // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
+                int legalMove = Board.MBoard[sourceRow][sourceColumn].LegalMove(Board.MBoard, sourceRow, sourceColumn, destRow, destColumn);
+
+
+                if (legalMove == 1)
+                {
+                    // Move the piece to it's new location
+                    Board.MBoard[destRow][destColumn] = Board.MBoard[sourceRow][sourceColumn];
+                    // After a valid move, switch who's turn it is
+                    IsBlacksTurn = IsBlacksTurn != true;
+                }
+                if (legalMove == 2)
+                {
+                    // Implement winning dialog
+                }
+
+
+                // Need to reset moveText for a new move
                 _moveText = "";
                 return;
             }
@@ -131,7 +158,7 @@ namespace Chess_GUI.ViewModels
         }
 
         // Checks to see if the input is formatted correctly
-        public bool Move(string moveText)
+        public bool ValidInputCheck(string moveText)
         {
             moveText = moveText.ToLower();
 

@@ -10,10 +10,10 @@ namespace Chess_GUI.Models.Pieces
     {
         public King(bool isBlack) : base(isBlack)
         {
-            base.Name = isBlack ? base.king[0] : base.king[1];
+            base.Name = isBlack ? base.King[0] : base.King[1];
         }
 
-        public override bool LegalMove(List<List<Piece>> internalBoard, int initalX, int initialY, int targetX, int targetY)
+        public override int LegalMove(List<List<Piece>> internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn)
         {
             throw new NotImplementedException();
         }
