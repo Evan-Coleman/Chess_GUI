@@ -120,7 +120,7 @@ namespace Chess_GUI.ViewModels
                 if (legalMove == 1)
                 {
                     // Move the piece to it's new location
-                    Board.MBoard[destRow][destColumn] = Board.MBoard[sourceRow][sourceColumn];
+                    //Board.MBoard[destRow][destColumn] = Board.MBoard[sourceRow][sourceColumn];
                     // After a valid move, switch who's turn it is
                     IsBlacksTurn = IsBlacksTurn != true;
                 }

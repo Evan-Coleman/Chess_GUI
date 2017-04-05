@@ -16,6 +16,7 @@ Board - WPieces, BPieces, MBoard
 
 Notes:
 Added a prop IsBlacksTurn, sets to true, so black always start, will need to add checking color into input validation
+Board does not update on a piece being moved
 
 
 Legalmove refactors for tomorrow:
