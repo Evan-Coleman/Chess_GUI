@@ -12,12 +12,29 @@ namespace Chess_GUI.ViewModels
     {
         // A string that gets built from button clicks on the board
         private string _moveText;
+
+        // Keeps track of who's turn it is
         public bool IsBlacksTurn { get; set; }
 
+        // Not using yet, check
+        //public ObservableCollection<Board> MyBoard { get; private set; }
+
+        // Relay command is the general command handler, sets up the MoveCommand
+        public RelayCommand MoveCommand { get; private set; }
+
+        // Is the game board
+        public Board Board { get; set; }
+
+        // CTOR for the viewmodel
         public BoardViewModel()
         {
+            // Game starts with black's move
             IsBlacksTurn = true;
+
+            // Creates a new instance of the model Board
             Board = new Board();
+
+            // The move starts out as an empty string until a button is clicked
             _moveText = "";
 
             //            // Not used yet, remove if never used
@@ -41,7 +58,6 @@ namespace Chess_GUI.ViewModels
             for (var i = 0; i < 8; i++)
             {       // sets board to all spaces in order to show an empty board
                 Board.MBoard.Add(spaces);
-                //spaces.Clear();
                 spaces = new List<Piece>();
                 for (var j = 0; j < 8; j++)
                 {
@@ -49,7 +65,8 @@ namespace Chess_GUI.ViewModels
                 }
             }
 
-            // Initialized board with correct Pieces
+            #region Board Init
+            // Black pieces
             Board.MBoard[0][0] = new Rook(true);
             Board.MBoard[0][1] = new Knight(true);
             Board.MBoard[0][2] = new Bishop(true);
@@ -68,6 +85,7 @@ namespace Chess_GUI.ViewModels
             Board.MBoard[1][6] = new Pawn(true);
             Board.MBoard[1][7] = new Pawn(true);
 
+            // White pieces
             Board.MBoard[6][0] = new Pawn(false);
             Board.MBoard[6][1] = new Pawn(false);
             Board.MBoard[6][2] = new Pawn(false);
@@ -85,21 +103,18 @@ namespace Chess_GUI.ViewModels
             Board.MBoard[7][5] = new Bishop(false);
             Board.MBoard[7][6] = new Knight(false);
             Board.MBoard[7][7] = new Rook(false);
+            #endregion
 
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
 
         }
 
-        // Not using yet, check
-        //public ObservableCollection<Board> MyBoard { get; private set; }
 
-        public RelayCommand MoveCommand { get; private set; }
-
-        public Board Board { get; set; }
 
 
         // Entry point for moves which first validates input, then either passes on to validate move based on piece rules
+        // Message is the button text
         public void Move(object message)
         {
             _moveText += (string)message;
@@ -124,9 +139,11 @@ namespace Chess_GUI.ViewModels
                     // After a valid move, switch who's turn it is
                     IsBlacksTurn = IsBlacksTurn != true;
                 }
+                // LegalMove is 2 when a king is taken, so winning condition goes here
                 if (legalMove == 2)
                 {
                     // Implement winning dialog
+                    return;
                 }
 
 
@@ -135,6 +152,7 @@ namespace Chess_GUI.ViewModels
                 return;
             }
 
+            // If moveText is over 4 it is an invalid move, so reset moveText
             if (_moveText.Length >= 4)
             {
                 _moveText = "";
@@ -142,7 +160,7 @@ namespace Chess_GUI.ViewModels
 
         }
 
-        // Greys out selected space on board
+        // Greys out selected space on board, and disables the command
         public bool Canexecute(object message)
         {
             if (message == null)
@@ -160,17 +178,27 @@ namespace Chess_GUI.ViewModels
         // Checks to see if the input is formatted correctly
         public bool ValidInputCheck(string moveText)
         {
+            // Remenant of when user could enter move by text, keeping for future protection of new UI
             moveText = moveText.ToLower();
 
-            if (moveText.Length != 4) // a valid move will always be 4 chars
+            // a valid move will always be 4 chars
+            if (moveText.Length != 4)
                 return false;
 
-            if (moveText[0] == moveText[2] && moveText[1] == moveText[3])   // can't move to the same spot
+            // can't move to the same spot
+            if (moveText[0] == moveText[2] && moveText[1] == moveText[3])
                 return false;
 
-            const string nums = "12345678"; // a valid move will always contain these numbers
-            const string lets = "abcdefgh"; // a valid move will always contain these letters
+            // a valid move will always contain these numbers
+            const string nums = "12345678";
+
+            // a valid move will always contain these letters
+            const string lets = "abcdefgh";
+
+            // J is the counter of valid input
             var j = 0;
+
+            // Checks to see if correct input is in the correct form (char,int,char,int)
             for (var i = 0; i < 8; i++)
             {
                 if (moveText[0] == lets[i])
@@ -182,6 +210,8 @@ namespace Chess_GUI.ViewModels
                 if (moveText[3] == nums[i])
                     j++;
             }
+
+            // A valid move will have 4 valid inputs
             return j == 4;
         }
 
