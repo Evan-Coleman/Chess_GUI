@@ -1,22 +1,21 @@
 ﻿# Chess_GUI
 Adding a WPF MVVM UI to my old chess game.
 
-Design (Tenative, 1st iteration):
+Design (Tenative, 2nd iteration):
 Board - WPieces, BPieces, MBoard
 	(1) BoardViewModel - Board
-					(*) Views
-	(*) Space - Name
-			(*) Piece - Text, LegalMove()
-					(*) Pawn
-					(*) Rook
-					(*) Knight
-					(*) Biship
-					(*) King
-					(*) Queen
+		(*) Views
+(*) Piece - Text, LegalMove()
+	(*) Pawn
+	(*) Rook
+	(*) Knight
+	(*) Biship
+	(*) King
+	(*) Queen
 
 Notes:
-Added a prop IsBlacksTurn, sets to true, so black always start, will need to add checking color into input validation
-Board does not update on a piece being moved
+-Added a prop IsBlacksTurn, sets to true, so black always start, will need to add checking color into input validation
+-Board does not update on a piece being moved
 
 
 Legalmove refactors for tomorrow:
@@ -42,6 +41,7 @@ TODO:
 [1/6]   Migrate piece move logic to new project (Knight done -- TESTING NEEDED)
 [x]   Refactor piece logic (Piece works, need to do the rest)
 []      Implement promotion dialog && check promotion logic against chess rules
+[]		Implement INotifyPropertyChanged interface
 []      Implement move list
 [1/2]   Add reset button (Added, but not functional yet)
 []      Add turn checking && prevent player from moving opponents pieces
