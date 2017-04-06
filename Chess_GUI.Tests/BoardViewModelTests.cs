@@ -90,14 +90,24 @@ namespace Chess_GUI.Tests
             var moveCommand = target.MoveCommand;
             Assert.IsInstanceOfType(moveCommand, typeof(RelayCommand));
 
-            moveCommand.Execute("a1");
-            moveCommand.Execute("a1");
-            moveCommand.Execute("a1asdsad");
-            moveCommand.Execute("a1");
-            moveCommand.Execute("a2");
-            moveCommand.Execute(null);
+            // Tests a valid move (knight moves)
+            moveCommand.Execute("b1c3");
+            Assert.AreNotEqual("", target.Board.MBoard[5][2]);
 
-            moveCommand.CanExecute("a1");
+            // Tests invalid move
+            moveCommand.Execute("ab1c3");
+
+            // Sequence for a king take (will break when turn checking is implemented)
+            moveCommand.Execute("c3b5");
+            moveCommand.Execute("b5d6");
+            moveCommand.Execute("d6e8");
+            Assert.AreEqual(1, target.WonGame);
+
+            // Any non selected row should be executable
+            Assert.IsTrue(moveCommand.CanExecute("a1"));
+
+            // Needs null handling
+            Assert.IsTrue(moveCommand.CanExecute(null));
         }
     }
 }

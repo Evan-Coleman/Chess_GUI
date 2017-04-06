@@ -18,7 +18,7 @@ namespace Chess_GUI.Models.Pieces
             bool isBlack = internalBoard[sourceRow][sourceColumn].IsBlack;
 
             //catchall errorchecking section
-            if (destRow > 8 || destRow < 1 || sourceColumn > 8 || sourceColumn < 1)   // checks for out of bounds
+            if (destRow > 7 || destRow < 0 || sourceColumn > 7 || sourceColumn < 0)   // checks for out of bounds
                 return 0;
 
             // makes sure you aren't trying to take your own piece

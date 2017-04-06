@@ -13,6 +13,9 @@ namespace Chess_GUI.ViewModels
         // A string that gets built from button clicks on the board
         private string _moveText;
 
+        // Will be set to 1 when King is taken
+        public int WonGame = 0;
+
         // Keeps track of who's turn it is
         public bool IsBlacksTurn { get; set; }
 
@@ -123,9 +126,9 @@ namespace Chess_GUI.ViewModels
             if (ValidInputCheck(_moveText))
             {
                 // Converts input to valid Column/Row indices
-                int sourceColumn = (int)_moveText[0] - 65;
+                int sourceColumn = (int)_moveText[0] - 97;
                 int sourceRow = 7 - ((int)_moveText[1] - 49);
-                int destColumn = _moveText[2] - 65;
+                int destColumn = _moveText[2] - 97;
                 int destRow = 7 - ((int)_moveText[3] - 49);
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
@@ -142,6 +145,7 @@ namespace Chess_GUI.ViewModels
                 // LegalMove is 2 when a king is taken, so winning condition goes here
                 if (legalMove == 2)
                 {
+                    WonGame = 1;
                     // Implement winning dialog
                     return;
                 }

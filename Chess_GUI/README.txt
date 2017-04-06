@@ -14,8 +14,10 @@ Board - WPieces, BPieces, MBoard
 	(*) Queen
 
 Notes:
+-Possibly add new model/viewmodel to handle gameplay
 -Added a prop IsBlacksTurn, sets to true, so black always start, will need to add checking color into input validation
 -Board does not update on a piece being moved
+-BoardViewModel:126 column might not be consistant.. pay attention to it
 
 
 Legalmove refactors for tomorrow:
@@ -25,7 +27,7 @@ Legalmove refactors for tomorrow:
 	before return if move if successful put
 		new EmptyPiece in source coords
 		new (x) in dest coords
-	return bools (research why return 2 on king though... might need to do something about that)
+	Change out of bounds checking to account for 0-7 indexing
 
 
 
