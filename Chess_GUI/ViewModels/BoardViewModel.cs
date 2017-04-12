@@ -126,10 +126,10 @@ namespace Chess_GUI.ViewModels
             if (ValidInputCheck(_moveText))
             {
                 // Converts input to valid Column/Row indices
-                int sourceColumn = (int)_moveText[0] - 97;
-                int sourceRow = 7 - ((int)_moveText[1] - 49);
-                int destColumn = _moveText[2] - 97;
-                int destRow = 7 - ((int)_moveText[3] - 49);
+                int sourceColumn = (int)_moveText[0] - 65;
+                int sourceRow = 8 - (int)char.GetNumericValue(_moveText[1]);
+                int destColumn = _moveText[2] - 65;
+                int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
                 int legalMove = Board.MBoard[sourceRow][sourceColumn].LegalMove(Board.MBoard, sourceRow, sourceColumn, destRow, destColumn);

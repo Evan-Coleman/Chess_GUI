@@ -15,7 +15,7 @@ namespace Chess_GUI.Models.Pieces
 
         public override int LegalMove(List<List<Piece>> internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
