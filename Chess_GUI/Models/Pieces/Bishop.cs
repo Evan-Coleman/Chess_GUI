@@ -61,21 +61,15 @@ namespace Chess_GUI.Models.Pieces
             }
             //catchall errorchecking section
 
-
-
-
-
-            if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] || internalBoard[destRow][destColumn].Piece.Name == base.King[1]) // check to see if bishop is taking a king
-                return 2;
-
             internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);        // these two actually move the piece
             internalBoard[destRow][destColumn].Piece = new Bishop(isBlack);
 
-
-
-
-
-
+            if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] ||
+                internalBoard[destRow][destColumn].Piece.Name == base.King[1])
+            // check to see if bishop is taking a king
+            {
+                return 2;
+            }
             return 1;
         }
     }
