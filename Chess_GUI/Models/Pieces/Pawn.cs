@@ -25,7 +25,7 @@ namespace Chess_GUI.Models.Pieces
             {   // fail if trying to move 2 spaces when pawn is not in it's starting position
                 if (internalBoard[sourceRow][sourceColumn].Piece.IsBlack == true)
                 {
-                    if (sourceRow != 2)
+                    if (sourceRow != 1)
                         return 0;
                 }
                 else
@@ -65,6 +65,7 @@ namespace Chess_GUI.Models.Pieces
             {
                 if (internalBoard[destRow][destColumn].Piece.Name == '\0')  // fail if trying to attack empty space
                     return 0;
+
                 internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);
                 if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] || internalBoard[destRow][destColumn].Piece.Name == base.King[1]) // check to see if pawn is taking a king
                     win = 1;
@@ -74,30 +75,10 @@ namespace Chess_GUI.Models.Pieces
                     return 2;
             }
 
-            //            if (destRow == 1 && isBlack == false || destRow == 8 && isBlack == true)
-            //            {       // if a pawn gets to the end will promote it
-            //                cout << "Your pawn has reached the other side and must be promoted, type the letter for ";
-            //                cout << "any piece besides I/i for king and P/p for pawn! (Be mindful of your pieces being either capitol or not)" << endl;
-            //                while (1)
-            //                {
-            //                    getline(cin, piece);
-            //                    if (isBlack == false)
-            //                        if (piece[0] == 'q' || piece[0] == 'r' || piece[0] == 'b' || piece[0] == 'k')
-            //                            correct = 1;
-            //                    if (isBlack == true)
-            //                        if (piece[0] == 'Q' || piece[0] == 'R' || piece[0] == 'B' || piece[0] == 'K')
-            //                            correct = 1;
-            //
-            //                    if (correct == 1)
-            //                    {
-            //                        internalBoard[destRow][destColumn] = piece[0];
-            //                        break;
-            //                    }
-            //                    else
-            //                        cout << "You entered an invalid choice, try again!";
-            //                }
-            //                return 1;
-            //            }
+            if (destRow == 1 && isBlack == false || destRow == 8 && isBlack == true)
+            {       // if a pawn gets to the end will promote it
+                return 3;
+            }
 
 
             return 1;

@@ -17,34 +17,38 @@ namespace Chess_GUI.Models
     {
 
 
-
+        // Default constructor to initialize the board
         public Board()
         {
 
-            var spaces = new List<Space>();
+            var spaces = new List<Space>
+            {
+                new Space(new Rook(true)),
+                new Space(new Knight(true)),
+                new Space(new Bishop(true)),
+                new Space(new Queen(true)),
+                new Space(new King(true)),
+                new Space(new Bishop(true)),
+                new Space(new Knight(true)),
+                new Space(new Rook(true))
+            };
 
-            spaces.Add(new Space(new Rook(true)));
-            spaces.Add(new Space(new Knight(true)));
-            spaces.Add(new Space(new Bishop(true)));
-            spaces.Add(new Space(new Queen(true)));
-            spaces.Add(new Space(new King(true)));
-            spaces.Add(new Space(new Bishop(true)));
-            spaces.Add(new Space(new Knight(true)));
-            spaces.Add(new Space(new Rook(true)));
 
             Add(spaces);
 
-            spaces = new List<Space>();
+            spaces = new List<Space>
+            {
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true)),
+                new Space(new Pawn(true))
+            };
 
 
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
-            spaces.Add(new Space(new Pawn(true)));
 
             Add(spaces);
 
@@ -59,29 +63,33 @@ namespace Chess_GUI.Models
                 Add(spaces);
             }
 
-            spaces = new List<Space>();
+            spaces = new List<Space>
+            {
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false)),
+                new Space(new Pawn(false))
+            };
 
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
-            spaces.Add(new Space(new Pawn(false)));
 
             Add(spaces);
 
-            spaces = new List<Space>();
+            spaces = new List<Space>
+            {
+                new Space(new Rook(false)),
+                new Space(new Knight(false)),
+                new Space(new Bishop(false)),
+                new Space(new Queen(false)),
+                new Space(new King(false)),
+                new Space(new Bishop(false)),
+                new Space(new Knight(false)),
+                new Space(new Rook(false))
+            };
 
-            spaces.Add(new Space(new Rook(false)));
-            spaces.Add(new Space(new Knight(false)));
-            spaces.Add(new Space(new Bishop(false)));
-            spaces.Add(new Space(new Queen(false)));
-            spaces.Add(new Space(new King(false)));
-            spaces.Add(new Space(new Bishop(false)));
-            spaces.Add(new Space(new Knight(false)));
-            spaces.Add(new Space(new Rook(false)));
 
             Add(spaces);
         }

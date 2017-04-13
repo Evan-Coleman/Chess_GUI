@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows;
+using Chess_GUI.Annotations;
 using Chess_GUI.Models;
 using Chess_GUI.Models.Pieces;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
 {
-    public class BoardViewModel
+    public class BoardViewModel : INotifyPropertyChanged
     {
         // A string that gets built from button clicks on the board
         private string _moveText;
@@ -60,10 +64,10 @@ namespace Chess_GUI.ViewModels
             if (ValidInputCheck(_moveText))
             {
                 // Converts input to valid Column/Row indices
-                int sourceRow = (int)_moveText[0] - 65;
-                int sourceColumn = (int)char.GetNumericValue(_moveText[1]);
-                int destRow = (int)_moveText[2] - 65;
-                int destColumn = (int)char.GetNumericValue(_moveText[3]);
+                int sourceRow = 8 - (int)char.GetNumericValue(_moveText[1]);
+                int sourceColumn = (int)_moveText[0] - 65;
+                int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
+                int destColumn = (int)_moveText[2] - 65;
 
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
@@ -73,17 +77,26 @@ namespace Chess_GUI.ViewModels
 
                 if (legalMove == 1)
                 {
-                    // Move the piece to it's new location
-                    //Board.MBoard[destRow][destColumn] = Board.MBoard[sourceRow][sourceColumn];
+                    // Move the piece to it's new location in the GUI
+                    OnPropertyChanged(nameof(Board));
                     // After a valid move, switch who's turn it is
-                    IsBlacksTurn = IsBlacksTurn != true;
+                    IsBlacksTurn = !IsBlacksTurn;
                 }
                 // LegalMove is 2 when a king is taken, so winning condition goes here
                 if (legalMove == 2)
                 {
+                    // Unused wongame variable, maybe remove
                     WonGame = 1;
-                    // Implement winning dialog
+                    // Move the piece to it's new location in the GUI
+                    OnPropertyChanged(nameof(Board));
+                    // Implement winning dialog HERE
                     return;
+                }
+                // LegalMove is 3 when a pawn makes it to the other side & needs to be promoted
+                if (legalMove == 3)
+                {
+                    // IMPLEMENT PROMOTION HERE
+                    OnPropertyChanged(nameof(Board));
                 }
 
 
@@ -129,31 +142,21 @@ namespace Chess_GUI.ViewModels
             if (moveText[0] == moveText[2] && moveText[1] == moveText[3])
                 return false;
 
-            // a valid move will always contain these numbers
-            const string nums = "01234567";
 
-            // a valid move will always contain these letters
-            const string lets = "abcdefgh";
+            var rgx = new Regex(@"[a-h][1-8][a-h][1-8]$");
 
-            // J is the counter of valid input
-            var j = 0;
+            // Checking against pattern of CharIntCharInt (with chars between a-h, and ints between 1-8)
+            return rgx.IsMatch(moveText);
 
-            // Checks to see if correct input is in the correct form (char,int,char,int)
-            for (var i = 0; i < 8; i++)
-            {
-                if (moveText[0] == lets[i])
-                    j++;
-                if (moveText[2] == lets[i])
-                    j++;
-                if (moveText[1] == nums[i])
-                    j++;
-                if (moveText[3] == nums[i])
-                    j++;
-            }
 
-            // A valid move will have 4 valid inputs
-            return j == 4;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
