@@ -13,258 +13,305 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource BoardViewModel}">
-        <Grid HorizontalAlignment="Right">
-            <Viewbox>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Vertical">
-                        <Border>
-                            <Button Name="UndoButton" Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}"  Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=UndoButton, Path=Name}">Undo Selection</Button>
-                        </Border>
-                        <Border>
-                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Reset Game</Button>
-                        </Border>
-                        <Border>
-                            <Button Width="auto" Height="auto" FontSize="10" Style="{DynamicResource GButtons}">Turn counter</Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Height="200" Width="86" TextAlignment="Center" TextWrapping="Wrap" Text="as"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </Viewbox>
-        </Grid>
-        <Grid HorizontalAlignment="Left">
-            <Viewbox>
-                <StackPanel x:Name="Board1" Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">8</Label>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A8, Path=Name}" Content="{Binding Board.MBoard[0][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="B8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B8, Path=Name}" Content="{Binding Board.MBoard[0][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="C8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C8, Path=Name}" Content="{Binding Board.MBoard[0][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="D8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D8, Path=Name}" Content="{Binding Board.MBoard[0][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="E8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E8, Path=Name}" Content="{Binding Board.MBoard[0][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="F8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F8, Path=Name}" Content="{Binding Board.MBoard[0][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="G8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G8, Path=Name}" Content="{Binding Board.MBoard[0][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="H8" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H8_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H8, Path=Name}" Content="{Binding Board.MBoard[0][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">7</Label>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="A7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A7, Path=Name}" Content="{Binding Board.MBoard[1][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="B7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B7, Path=Name}" Content="{Binding Board.MBoard[1][1].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessB}">                                                                                                       
-                            <Button Name="C7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C7, Path=Name}" Content="{Binding Board.MBoard[1][2].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessW}">                                                                                                       
-                            <Button Name="D7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D7, Path=Name}" Content="{Binding Board.MBoard[1][3].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessB}">                                                                                                       
-                            <Button Name="E7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E7, Path=Name}" Content="{Binding Board.MBoard[1][4].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessW}">                                                                                                       
-                            <Button Name="F7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F7, Path=Name}" Content="{Binding Board.MBoard[1][5].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessB}">                                                                                                       
-                            <Button Name="G7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G7, Path=Name}" Content="{Binding Board.MBoard[1][6].Name}"></Button>
-                        </Border>                                                                                                                                       
-                        <Border Style="{DynamicResource ChessW}">                                                                                                       
-                            <Button Name="H7" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H7_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H7, Path=Name}" Content="{Binding Board.MBoard[1][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">6</Label>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A6, Path=Name}" Content="{Binding Board.MBoard[2][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="B6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B6, Path=Name}" Content="{Binding Board.MBoard[2][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="C6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C6, Path=Name}" Content="{Binding Board.MBoard[2][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="D6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D6, Path=Name}" Content="{Binding Board.MBoard[2][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="E6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E6, Path=Name}" Content="{Binding Board.MBoard[2][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="F6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F6, Path=Name}" Content="{Binding Board.MBoard[2][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="G6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G6, Path=Name}" Content="{Binding Board.MBoard[2][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="H6" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H6_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H6, Path=Name}" Content="{Binding Board.MBoard[2][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">5</Label>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="A5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A5, Path=Name}" Content="{Binding Board.MBoard[3][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="B5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B5, Path=Name}" Content="{Binding Board.MBoard[3][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="C5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C5, Path=Name}" Content="{Binding Board.MBoard[3][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="D5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D5, Path=Name}" Content="{Binding Board.MBoard[3][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="E5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E5, Path=Name}" Content="{Binding Board.MBoard[3][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="F5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F5, Path=Name}" Content="{Binding Board.MBoard[3][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="G5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G5, Path=Name}" Content="{Binding Board.MBoard[3][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="H5" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H5_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H5, Path=Name}" Content="{Binding Board.MBoard[3][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">4</Label>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A4, Path=Name}" Content="{Binding Board.MBoard[4][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="B4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B4, Path=Name}" Content="{Binding Board.MBoard[4][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="C4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C4, Path=Name}" Content="{Binding Board.MBoard[4][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="D4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D4, Path=Name}" Content="{Binding Board.MBoard[4][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="E4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E4, Path=Name}" Content="{Binding Board.MBoard[4][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="F4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F4, Path=Name}" Content="{Binding Board.MBoard[4][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="G4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G4, Path=Name}" Content="{Binding Board.MBoard[4][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="H4" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H4_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H4, Path=Name}" Content="{Binding Board.MBoard[4][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">3</Label>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="A3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A3, Path=Name}" Content="{Binding Board.MBoard[5][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="B3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B3, Path=Name}" Content="{Binding Board.MBoard[5][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="C3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C3, Path=Name}" Content="{Binding Board.MBoard[5][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="D3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D3, Path=Name}" Content="{Binding Board.MBoard[5][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="E3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E3, Path=Name}" Content="{Binding Board.MBoard[5][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="F3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F3, Path=Name}" Content="{Binding Board.MBoard[5][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="G3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G3, Path=Name}" Content="{Binding Board.MBoard[5][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="H3" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H3_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H3, Path=Name}" Content="{Binding Board.MBoard[5][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">2</Label>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A2, Path=Name}" Content="{Binding Board[6][0].Piece.Name, Mode=OneWay}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="B2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B2, Path=Name}" Content="{Binding Board.MBoard[6][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="C2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C2, Path=Name}" Content="{Binding Board.MBoard[6][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="D2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D2, Path=Name}" Content="{Binding Board.MBoard[6][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="E2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E2, Path=Name}" Content="{Binding Board.MBoard[6][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="F2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F2, Path=Name}" Content="{Binding Board.MBoard[6][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="G2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G2, Path=Name}" Content="{Binding Board.MBoard[6][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="H2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H2, Path=Name}" Content="{Binding Board.MBoard[6][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="0,0,7,0">1</Label>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="A1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A1, Path=Name}" Content="{Binding Board.MBoard[7][0].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="B1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B1, Path=Name}" Content="{Binding Board.MBoard[7][1].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="C1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="C1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=C1, Path=Name}" Content="{Binding Board.MBoard[7][2].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="D1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="D1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=D1, Path=Name}" Content="{Binding Board.MBoard[7][3].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="E1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="E1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=E1, Path=Name}" Content="{Binding Board.MBoard[7][4].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="F1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="F1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=F1, Path=Name}" Content="{Binding Board.MBoard[7][5].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessB}">
-                            <Button Name="G1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="G1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=G1, Path=Name}" Content="{Binding Board.MBoard[7][6].Name}"></Button>
-                        </Border>
-                        <Border Style="{DynamicResource ChessW}">
-                            <Button Name="H1" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="H1_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=H1, Path=Name}" Content="{Binding Board.MBoard[7][7].Name}"></Button>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontSize="48" Margin="57,0,20,0">A</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >B</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >C</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >D</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >E</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >F</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >G</Label>
-                        <Label FontSize="48" Margin="18,0,20,0" >H</Label>
-                    </StackPanel>
-                </StackPanel>
-            </Viewbox>
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="A0" Grid.Row="0" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="A1" Grid.Row="0" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="A2" Grid.Row="0" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="A3" Grid.Row="0" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="A4" Grid.Row="0" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="A5" Grid.Row="0" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="A6" Grid.Row="0" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="A7" Grid.Row="0" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="B0" Grid.Row="1" Grid.Column="0"
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="B1" Grid.Row="1" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="B2" Grid.Row="1" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="B3" Grid.Row="1" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="B4" Grid.Row="1" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="B5" Grid.Row="1" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="B6" Grid.Row="1" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="B7" Grid.Row="1" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="C0" Grid.Row="2" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="C1" Grid.Row="2" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="C2" Grid.Row="2" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="C3" Grid.Row="2" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="C4" Grid.Row="2" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="C5" Grid.Row="2" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="C6" Grid.Row="2" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="C7" Grid.Row="2" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="D0" Grid.Row="3" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="D1" Grid.Row="3" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="D2" Grid.Row="3" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="D3" Grid.Row="3" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="D4" Grid.Row="3" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="D5" Grid.Row="3" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="D6" Grid.Row="3" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="D7" Grid.Row="3" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+                                                         
+        
+        
+        <Button x:Name="E0" Grid.Row="4" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="E1" Grid.Row="4" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="E2" Grid.Row="4" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="E3" Grid.Row="4" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="E4" Grid.Row="4" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="E5" Grid.Row="4" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="E6" Grid.Row="4" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="E7" Grid.Row="4" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="F0" Grid.Row="5" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="F1" Grid.Row="5" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="F2" Grid.Row="5" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="F3" Grid.Row="5" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="F4" Grid.Row="5" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="F5" Grid.Row="5" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="F6" Grid.Row="5" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="F7" Grid.Row="5" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="G0" Grid.Row="6" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="G1" Grid.Row="6" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="G2" Grid.Row="6" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="G3" Grid.Row="6" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="G4" Grid.Row="6" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="G5" Grid.Row="6" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="G6" Grid.Row="6" Grid.Column="6" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="G7" Grid.Row="6" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+                                                        
+        
+        
+        <Button x:Name="H0" Grid.Row="7" Grid.Column="0" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="H1" Grid.Row="7" Grid.Column="1" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="H2" Grid.Row="7" Grid.Column="2" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="H3" Grid.Row="7" Grid.Column="3" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="H4" Grid.Row="7" Grid.Column="4" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="H5" Grid.Row="7" Grid.Column="5" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
+        <Button x:Name="H6" Grid.Row="7" Grid.Column="6"
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="SeaGreen"
+                FontSize="48"></Button>
+        <Button x:Name="H7" Grid.Row="7" Grid.Column="7" 
+                Content="{Binding Board[0][0].Piece.Name}" 
+                Background="Wheat"
+                FontSize="48"></Button>
     </Grid>
 
 
