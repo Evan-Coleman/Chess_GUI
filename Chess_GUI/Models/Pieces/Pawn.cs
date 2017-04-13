@@ -45,7 +45,7 @@ namespace Chess_GUI.Models.Pieces
             if (isBlack == false && sourceRow - destRow < 1)  // ^
                 return 0;
             // makes sure you aren't trying to take your own piece
-            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack)
+            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack && internalBoard[destRow][destColumn].Piece.Name != '\0')
                 return 0;
 
             //catchall errorchecking section

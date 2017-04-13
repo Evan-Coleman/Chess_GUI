@@ -22,7 +22,7 @@ namespace Chess_GUI.Models.Pieces
                 return 0;
 
             // makes sure you aren't trying to take your own piece
-            if (internalBoard[destRow][destColumn].Piece.IsBlack && isBlack) // FIX THIS MAYBE WRONG
+            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack && internalBoard[destRow][destColumn].Piece.Name != '\0') // FIX THIS MAYBE WRONG
                 return 0;
 
             if (Math.Abs(sourceRow - destRow) == 2 && Math.Abs(sourceColumn - destColumn) != 1 || Math.Abs(sourceColumn - destColumn) == 2 && Math.Abs(sourceRow - destRow) != 1)   // this checks to see if the move is in valid form

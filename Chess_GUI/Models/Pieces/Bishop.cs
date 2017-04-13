@@ -21,7 +21,7 @@ namespace Chess_GUI.Models.Pieces
             if (destRow > 7 || destRow < 0 || sourceColumn > 7 || sourceColumn < 0) // checks for out of bounds
                 return 0;
             // makes sure you aren't trying to take your own piece
-            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack)
+            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack && internalBoard[destRow][destColumn].Piece.Name != '\0')
                 return 0;
 
             if (Math.Abs(sourceRow - destRow) != Math.Abs(sourceColumn - destColumn))   // this checks to see if the move is in valid form
