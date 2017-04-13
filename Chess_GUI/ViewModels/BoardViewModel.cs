@@ -60,12 +60,14 @@ namespace Chess_GUI.ViewModels
             if (ValidInputCheck(_moveText))
             {
                 // Converts input to valid Column/Row indices
-                int sourceColumn = (int)_moveText[0] - 65;
-                int sourceRow = 8 - (int)char.GetNumericValue(_moveText[1]);
-                int destColumn = _moveText[2] - 65;
-                int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
+                int sourceRow = (int)_moveText[0] - 65;
+                int sourceColumn = (int)char.GetNumericValue(_moveText[1]);
+                int destRow = (int)_moveText[2] - 65;
+                int destColumn = (int)char.GetNumericValue(_moveText[3]);
+
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
+
                 int legalMove = Board[sourceRow][sourceColumn].Piece.LegalMove(Board, sourceRow, sourceColumn, destRow, destColumn);
 
 
@@ -91,7 +93,7 @@ namespace Chess_GUI.ViewModels
             }
 
             // If moveText is over 4 it is an invalid move, so reset moveText
-            if (_moveText.Length >= 4)
+            if (_moveText.Length > 4)
             {
                 _moveText = "";
             }
@@ -128,7 +130,7 @@ namespace Chess_GUI.ViewModels
                 return false;
 
             // a valid move will always contain these numbers
-            const string nums = "12345678";
+            const string nums = "01234567";
 
             // a valid move will always contain these letters
             const string lets = "abcdefgh";
