@@ -201,7 +201,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="48" Margin="0,0,7,0">2</Label>
                         <Border Style="{DynamicResource ChessW}">
-                            <Button Name="A2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A2, Path=Name}" Content="{Binding Board.MBoard[6][0].Name}"></Button>
+                            <Button Name="A2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="A2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=A2, Path=Name}" Content="{Binding Board[6][0].Piece.Name, Mode=OneWay}"></Button>
                         </Border>
                         <Border Style="{DynamicResource ChessB}">
                             <Button Name="B2" Background="{x:Null}" FontSize="40" Height="auto" Foreground="Black" Click="B2_OnClick" Command="{Binding MoveCommand}" CommandParameter="{Binding ElementName=B2, Path=Name}" Content="{Binding Board.MBoard[6][1].Name}"></Button>

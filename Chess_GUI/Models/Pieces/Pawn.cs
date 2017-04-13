@@ -14,16 +14,16 @@ namespace Chess_GUI.Models.Pieces
         }
 
 
-        public override int LegalMove(List<List<Piece>> internalBoard, int sourceRow, int sourceColumn, int destRow, int destColumn)
+        public override int LegalMove(Board internalBoard, int sourceRow, int sourceColumn, int destRow, int destColumn)
         {
-            bool isBlack = internalBoard[sourceRow][sourceColumn].IsBlack;
+            bool isBlack = internalBoard[sourceRow][sourceColumn].Piece.IsBlack;
             int win = 0; // if a king get taken will be set to 1
             //catchall errorchecking section
             if (Math.Abs(sourceRow - destRow) > 2)   // fail if trying to move more than 2 spaces
                 return 0;
             if (Math.Abs(sourceRow - destRow) == 2)
             {   // fail if trying to move 2 spaces when pawn is not in it's starting position
-                if (internalBoard[sourceRow][sourceColumn].IsBlack == true)
+                if (internalBoard[sourceRow][sourceColumn].Piece.IsBlack == true)
                 {
                     if (sourceRow != 2)
                         return 0;
@@ -45,7 +45,7 @@ namespace Chess_GUI.Models.Pieces
             if (isBlack == false && sourceRow - destRow < 1)  // ^
                 return 0;
             // makes sure you aren't trying to take your own piece
-            if (internalBoard[destRow][destColumn].IsBlack == isBlack)
+            if (internalBoard[destRow][destColumn].Piece.IsBlack == isBlack)
                 return 0;
 
             //catchall errorchecking section
@@ -55,21 +55,21 @@ namespace Chess_GUI.Models.Pieces
             {
                 for (int i = sourceRow - 1; i >= destRow; i--)
                 {       // catches for white going up, not black going down
-                    if (internalBoard[i][sourceColumn].Name != '\0')
+                    if (internalBoard[i][sourceColumn].Piece.Name != '\0')
                         return 0;
                 }
-                internalBoard[sourceRow][sourceColumn] = new EmptyPiece(true);
-                internalBoard[destRow][destColumn] = new Pawn(isBlack);
+                internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);
+                internalBoard[destRow][destColumn].Piece = new Pawn(isBlack);
             }
             else
             {
-                if (internalBoard[destRow][destColumn].Name == '\0')  // fail if trying to attack empty space
+                if (internalBoard[destRow][destColumn].Piece.Name == '\0')  // fail if trying to attack empty space
                     return 0;
-                internalBoard[sourceRow][sourceColumn] = new EmptyPiece(true);
-                if (internalBoard[destRow][destColumn].Name == base.King[0] || internalBoard[destRow][destColumn].Name == base.King[1]) // check to see if pawn is taking a king
+                internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);
+                if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] || internalBoard[destRow][destColumn].Piece.Name == base.King[1]) // check to see if pawn is taking a king
                     win = 1;
-                internalBoard[sourceRow][sourceColumn] = new EmptyPiece(true);
-                internalBoard[destRow][destColumn] = new Pawn(isBlack);
+                internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);
+                internalBoard[destRow][destColumn].Piece = new Pawn(isBlack);
                 if (win == 1)
                     return 2;
             }

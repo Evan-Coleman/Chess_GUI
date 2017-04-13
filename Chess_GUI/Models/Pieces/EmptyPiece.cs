@@ -13,7 +13,7 @@ namespace Chess_GUI.Models.Pieces
         {
         }
 
-        public override int LegalMove(List<List<Piece>> internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn)
+        public override int LegalMove(Board internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn)
         {
             return 0;
         }
