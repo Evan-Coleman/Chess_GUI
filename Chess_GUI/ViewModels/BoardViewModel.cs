@@ -35,84 +35,18 @@ namespace Chess_GUI.ViewModels
             IsBlacksTurn = true;
 
             // Creates a new instance of the model Board
-            Board = new Board();
+
 
             // The move starts out as an empty string until a button is clicked
             _moveText = "";
 
-            //            // Not used yet, remove if never used
-            //            MyBoard = new ObservableCollection<Board>()
-            //            {
-            //                Board
-            //    };
 
-            // spaces is the row of the board
-            var spaces = new List<Piece>();
-
-            // Initializes a new board to be populated
-            Board.MBoard = new List<List<Piece>>();
-
-            // Making all rows spaces for initial state of board
-            for (var i = 0; i < 8; i++)
-            {
-                spaces.Add(new EmptyPiece(true));
-            }
-
-            for (var i = 0; i < 8; i++)
-            {       // sets board to all spaces in order to show an empty board
-                Board.MBoard.Add(spaces);
-                spaces = new List<Piece>();
-                for (var j = 0; j < 8; j++)
-                {
-                    spaces.Add(new EmptyPiece(true));
-                }
-            }
-
-            #region Board Init
-            // Black pieces
-            Board.MBoard[0][0] = new Rook(true);
-            Board.MBoard[0][1] = new Knight(true);
-            Board.MBoard[0][2] = new Bishop(true);
-            Board.MBoard[0][3] = new Queen(true);
-            Board.MBoard[0][4] = new King(true);
-            Board.MBoard[0][5] = new Bishop(true);
-            Board.MBoard[0][6] = new Knight(true);
-            Board.MBoard[0][7] = new Rook(true);
-
-            Board.MBoard[1][0] = new Pawn(true);
-            Board.MBoard[1][1] = new Pawn(true);
-            Board.MBoard[1][2] = new Pawn(true);
-            Board.MBoard[1][3] = new Pawn(true);
-            Board.MBoard[1][4] = new Pawn(true);
-            Board.MBoard[1][5] = new Pawn(true);
-            Board.MBoard[1][6] = new Pawn(true);
-            Board.MBoard[1][7] = new Pawn(true);
-
-            // White pieces
-            Board.MBoard[6][0] = new Pawn(false);
-            Board.MBoard[6][1] = new Pawn(false);
-            Board.MBoard[6][2] = new Pawn(false);
-            Board.MBoard[6][3] = new Pawn(false);
-            Board.MBoard[6][4] = new Pawn(false);
-            Board.MBoard[6][5] = new Pawn(false);
-            Board.MBoard[6][6] = new Pawn(false);
-            Board.MBoard[6][7] = new Pawn(false);
-
-            Board.MBoard[7][0] = new Rook(false);
-            Board.MBoard[7][1] = new Knight(false);
-            Board.MBoard[7][2] = new Bishop(false);
-            Board.MBoard[7][3] = new Queen(false);
-            Board.MBoard[7][4] = new King(false);
-            Board.MBoard[7][5] = new Bishop(false);
-            Board.MBoard[7][6] = new Knight(false);
-            Board.MBoard[7][7] = new Rook(false);
-            #endregion
+            Board = new Board();
 
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
 
         }
-
 
 
 
@@ -132,7 +66,7 @@ namespace Chess_GUI.ViewModels
                 int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
-                int legalMove = Board.MBoard[sourceRow][sourceColumn].LegalMove(Board.MBoard, sourceRow, sourceColumn, destRow, destColumn);
+                int legalMove = Board[sourceRow][sourceColumn].Piece.LegalMove(Board, sourceRow, sourceColumn, destRow, destColumn);
 
 
                 if (legalMove == 1)

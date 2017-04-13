@@ -73,6 +73,7 @@
     <Compile Include="Models\Pieces\Bishop.cs" />
     <Compile Include="Models\Pieces\Rook.cs" />
     <Compile Include="Models\Pieces\Pawn.cs" />
+    <Compile Include="Models\Space.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BoardViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />

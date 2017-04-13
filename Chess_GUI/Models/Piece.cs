@@ -36,7 +36,7 @@ namespace Chess_GUI.Models
         // True if piece is black
         internal bool IsBlack;
 
-        public abstract int LegalMove(List<List<Piece>> internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn);
+        public abstract int LegalMove(Board internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn);
 
     }
 }
