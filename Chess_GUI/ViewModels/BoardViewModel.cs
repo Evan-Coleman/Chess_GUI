@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media.Animation;
 using Chess_GUI.Annotations;
 using Chess_GUI.Models;
 using Chess_GUI.Models.Pieces;
@@ -29,8 +30,16 @@ namespace Chess_GUI.ViewModels
         // Relay command is the general command handler, sets up the MoveCommand
         public RelayCommand MoveCommand { get; private set; }
 
+        // Relay command is the general command handler, sets up the MoveCommand
+        public RelayCommand ResetCommand { get; private set; }
+
         // Is the game board
         public Board Board { get; set; }
+
+        // Move list
+        public ObservableCollection<string> MovesList { get; set; }
+
+        public string WhoTurn => IsBlacksTurn ? "Black's turn" : "White's turn";
 
         // CTOR for the viewmodel
         public BoardViewModel()
@@ -46,13 +55,33 @@ namespace Chess_GUI.ViewModels
 
 
             Board = new Board();
+            MovesList = new ObservableCollection<string>();
 
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
+            ResetCommand = new RelayCommand(Reset, Canexecute);
 
         }
 
+        public void Reset(object message)
+        {
+            // Make a new instance of a board which will have everything in default position
+            Board = new Board();
+            // Need to remove currently selected cell
+            _moveText = "";
+            // Update GUI with new fresh board
+            OnPropertyChanged(nameof(Board));
 
+            // Creates a new movelist for the new game
+            MovesList = new ObservableCollection<string>();
+            OnPropertyChanged(nameof(MovesList));
+
+
+            // Game always starts with black first
+            IsBlacksTurn = true;
+            // Notifies GUI who's turn it is
+            OnPropertyChanged(nameof(WhoTurn));
+        }
 
         // Entry point for moves which first validates input, then either passes on to validate move based on piece rules
         // Message is the button text
@@ -60,6 +89,12 @@ namespace Chess_GUI.ViewModels
         {
             _moveText += (string)message;
 
+            // If moveText is over 4 it is an invalid move, so reset moveText and return
+            if (_moveText.Length > 4)
+            {
+                _moveText = "";
+                return;
+            }
 
             if (ValidInputCheck(_moveText))
             {
@@ -69,6 +104,11 @@ namespace Chess_GUI.ViewModels
                 int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
                 int destColumn = (int)_moveText[2] - 65;
 
+                // Don't allow player to move other's pieces
+                if (IsBlacksTurn == !Board[sourceRow][sourceColumn].Piece.IsBlack)
+                {
+                    return;
+                }
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
 
@@ -81,6 +121,12 @@ namespace Chess_GUI.ViewModels
                     OnPropertyChanged(nameof(Board));
                     // After a valid move, switch who's turn it is
                     IsBlacksTurn = !IsBlacksTurn;
+                    // Notifies GUI who's turn it is
+                    OnPropertyChanged(nameof(WhoTurn));
+
+                    // Adds move to list and updates it on GUI
+                    MovesList.Insert(0, _moveText);
+                    OnPropertyChanged(nameof(MovesList));
                 }
                 // LegalMove is 2 when a king is taken, so winning condition goes here
                 if (legalMove == 2)
@@ -89,14 +135,34 @@ namespace Chess_GUI.ViewModels
                     WonGame = 1;
                     // Move the piece to it's new location in the GUI
                     OnPropertyChanged(nameof(Board));
+
+                    // Adds move to list and updates it on GUI
+                    MovesList.Insert(0, _moveText);
+                    OnPropertyChanged(nameof(MovesList));
+
                     // Implement winning dialog HERE
+                    // Implement winning dialog HERE
+                    // Implement winning dialog HERE
+
                     return;
                 }
                 // LegalMove is 3 when a pawn makes it to the other side & needs to be promoted
                 if (legalMove == 3)
                 {
                     // IMPLEMENT PROMOTION HERE
+                    // IMPLEMENT PROMOTION HERE
+                    // IMPLEMENT PROMOTION HERE
+
+                    // Move the piece to it's new location in the GUI
                     OnPropertyChanged(nameof(Board));
+
+                    IsBlacksTurn = !IsBlacksTurn;
+                    // Notifies GUI who's turn it is
+                    OnPropertyChanged(nameof(WhoTurn));
+
+                    // Adds move to list and updates it on GUI
+                    MovesList.Insert(0, _moveText);
+                    OnPropertyChanged(nameof(MovesList));
                 }
 
 
@@ -105,11 +171,7 @@ namespace Chess_GUI.ViewModels
                 return;
             }
 
-            // If moveText is over 4 it is an invalid move, so reset moveText
-            if (_moveText.Length > 4)
-            {
-                _moveText = "";
-            }
+
 
         }
 
