@@ -27,7 +27,6 @@ namespace Chess_GUI
         public MainWindow()
         {
             InitializeComponent();
-            //DataContext = new BoardViewModel();
         }
     }
 }

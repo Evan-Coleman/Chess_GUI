@@ -10,6 +10,16 @@
 
     <Window.Resources>
         <local1:BoardViewModel x:Key="BoardViewModel"></local1:BoardViewModel>
+        <!--Trigger to easily tell who's turn it is-->
+        <Style x:Key="TurnWithTrigger" TargetType="Button">
+            <Setter Property="BorderBrush" Value="White" />
+            <Style.Triggers>
+                <Trigger Property="Content" Value="Black's turn">
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
 
 
@@ -22,7 +32,7 @@
         </Grid.InputBindings>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" ></ColumnDefinition>
+            <ColumnDefinition Width=".3*" ></ColumnDefinition>
             <ColumnDefinition Width="*" ></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -31,9 +41,9 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="2.7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -43,29 +53,36 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height=".4*"></RowDefinition>
         </Grid.RowDefinitions>
 
 
-<!--        Side for infos-->
+        <!-- Buttons & Moves -->
         <Button Grid.Row="0"  Grid.Column="9" FontSize="25"
-                Command="{Binding ResetCommand}">New Game</Button>
+                Command="{Binding ResetCommand}"
+                >New Game</Button>
         <Button Grid.Row="1"  Grid.Column="9" FontSize="25"
-                Content="{Binding WhoTurn}"></Button>
+                Content="{Binding WhoTurn}" Style="{StaticResource TurnWithTrigger}"
+                BorderThickness="10"></Button>
         <Button x:Name="UndoButton"  Grid.Row="2"  Grid.Column="9" FontSize="25" 
                 Command="{Binding ResetMoveTextCommand}"
                 >Undo Selection</Button>
-        <TextBlock Grid.Row="3" Grid.Column="9"
+        <TextBox x:Name="SelectedText" Grid.Row="3" Grid.Column="9"
                    FontSize="25"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Text="{Binding MoveText}"></TextBlock>
+                   Text="{Binding MoveText}"
+                   IsReadOnly="True" IsEnabled="False"
+                   BorderThickness="0"></TextBox>
         <ListBox Grid.Row="4" Grid.RowSpan="5" FontSize="20"  Grid.Column="9"
                  
                  ItemsSource="{Binding Path=MovesList}"
                  HorizontalContentAlignment="Center"
-                 Width="200"></ListBox>
+                 BorderThickness="0"></ListBox>
 
+
+
+        <!--        Chess Spaces-->
         <Button x:Name="A8" Grid.Row="0" Grid.Column="1"  
                 Command="{Binding MoveCommand}" 
                 CommandParameter="{Binding ElementName=A8, Path=Name}"
@@ -472,26 +489,25 @@
                 Background="Wheat"
                 FontSize="48"></Button>
 
+        <!--Side Markers-->
+        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">8</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">7</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">6</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">5</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">4</TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">3</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">2</TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">1</TextBlock>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="45">8</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="45">7</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="45">6</TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" FontSize="45">5</TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="0" FontSize="45">4</TextBlock>
-        <TextBlock Grid.Row="5" Grid.Column="0" FontSize="45">3</TextBlock>
-        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="45">2</TextBlock>
-        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="45">1</TextBlock>
-
-        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" TextAlignment="Center">a</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="2" FontSize="25" TextAlignment="Center">b</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="3" FontSize="25" TextAlignment="Center">c</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="4" FontSize="25" TextAlignment="Center">d</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="5" FontSize="25" TextAlignment="Center">e</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="6" FontSize="25" TextAlignment="Center">f</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="7" FontSize="25" TextAlignment="Center">g</TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="8" FontSize="25" TextAlignment="Center">h</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">A</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">B</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">C</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">D</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">E</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">F</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="7" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">G</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="8" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">H</TextBlock>
     </Grid>
 
 
 </Window>
-
