@@ -16,7 +16,6 @@ namespace Chess_GUI.ViewModels
     public class BoardViewModel : INotifyPropertyChanged
     {
         // A string that gets built from button clicks on the board
-        private string _moveText;
 
         // Will be set to 1 when King is taken
         public int WonGame = 0;
@@ -33,6 +32,8 @@ namespace Chess_GUI.ViewModels
         // Relay command is the general command handler, sets up the MoveCommand
         public RelayCommand ResetCommand { get; private set; }
 
+        public RelayCommand ResetMoveTextCommand { get; set; }
+
         // Is the game board
         public Board Board { get; set; }
 
@@ -40,6 +41,8 @@ namespace Chess_GUI.ViewModels
         public ObservableCollection<string> MovesList { get; set; }
 
         public string WhoTurn => IsBlacksTurn ? "Black's turn" : "White's turn";
+
+        public string MoveText { get; set; }
 
         // CTOR for the viewmodel
         public BoardViewModel()
@@ -51,7 +54,7 @@ namespace Chess_GUI.ViewModels
 
 
             // The move starts out as an empty string until a button is clicked
-            _moveText = "";
+            MoveText = "";
 
 
             Board = new Board();
@@ -60,6 +63,7 @@ namespace Chess_GUI.ViewModels
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
             ResetCommand = new RelayCommand(Reset, Canexecute);
+            ResetMoveTextCommand = new RelayCommand(ResetMoveText, Canexecute);
 
         }
 
@@ -68,7 +72,8 @@ namespace Chess_GUI.ViewModels
             // Make a new instance of a board which will have everything in default position
             Board = new Board();
             // Need to remove currently selected cell
-            _moveText = "";
+            MoveText = "";
+            OnPropertyChanged(nameof(MoveText));
             // Update GUI with new fresh board
             OnPropertyChanged(nameof(Board));
 
@@ -87,28 +92,34 @@ namespace Chess_GUI.ViewModels
         // Message is the button text
         public void Move(object message)
         {
-            _moveText += (string)message;
+            MoveText += (string)message;
+            OnPropertyChanged(nameof(MoveText));
 
             // If moveText is over 4 it is an invalid move, so reset moveText and return
-            if (_moveText.Length > 4)
+            if (MoveText.Length > 4)
             {
-                _moveText = "";
+                MoveText = "";
+                OnPropertyChanged(nameof(MoveText));
                 return;
             }
 
-            if (ValidInputCheck(_moveText))
+            // Don't allow player to move other's pieces or select empty spots
+            if (IsBlacksTurn ==
+                !Board[8 - (int)char.GetNumericValue(MoveText[1])][(int)MoveText[0] - 65].Piece.IsBlack ||
+                Board[8 - (int)char.GetNumericValue(MoveText[1])][(int)MoveText[0] - 65].Piece.Name == '\0')
+            {
+                MoveText = "";
+                OnPropertyChanged(nameof(MoveText));
+                return;
+            }
+
+            if (ValidInputCheck(MoveText))
             {
                 // Converts input to valid Column/Row indices
-                int sourceRow = 8 - (int)char.GetNumericValue(_moveText[1]);
-                int sourceColumn = (int)_moveText[0] - 65;
-                int destRow = 8 - (int)char.GetNumericValue(_moveText[3]);
-                int destColumn = (int)_moveText[2] - 65;
-
-                // Don't allow player to move other's pieces
-                if (IsBlacksTurn == !Board[sourceRow][sourceColumn].Piece.IsBlack)
-                {
-                    return;
-                }
+                int sourceRow = 8 - (int)char.GetNumericValue(MoveText[1]);
+                int sourceColumn = (int)MoveText[0] - 65;
+                int destRow = 8 - (int)char.GetNumericValue(MoveText[3]);
+                int destColumn = (int)MoveText[2] - 65;
 
                 // Check if move if legal, if so legalMove will be 1, if game is won it will be 2
 
@@ -125,8 +136,10 @@ namespace Chess_GUI.ViewModels
                     OnPropertyChanged(nameof(WhoTurn));
 
                     // Adds move to list and updates it on GUI
-                    MovesList.Insert(0, _moveText);
+                    MovesList.Insert(0, MoveText);
                     OnPropertyChanged(nameof(MovesList));
+
+                    ResetMoveText("");
                 }
                 // LegalMove is 2 when a king is taken, so winning condition goes here
                 if (legalMove == 2)
@@ -137,14 +150,14 @@ namespace Chess_GUI.ViewModels
                     OnPropertyChanged(nameof(Board));
 
                     // Adds move to list and updates it on GUI
-                    MovesList.Insert(0, _moveText);
+                    MovesList.Insert(0, MoveText);
                     OnPropertyChanged(nameof(MovesList));
 
                     // Implement winning dialog HERE
                     // Implement winning dialog HERE
                     // Implement winning dialog HERE
 
-                    return;
+                    ResetMoveText("");
                 }
                 // LegalMove is 3 when a pawn makes it to the other side & needs to be promoted
                 if (legalMove == 3)
@@ -161,18 +174,28 @@ namespace Chess_GUI.ViewModels
                     OnPropertyChanged(nameof(WhoTurn));
 
                     // Adds move to list and updates it on GUI
-                    MovesList.Insert(0, _moveText);
+                    MovesList.Insert(0, MoveText);
                     OnPropertyChanged(nameof(MovesList));
+
+                    ResetMoveText("");
                 }
 
 
-                // Need to reset moveText for a new move
-                _moveText = "";
-                return;
             }
 
+            if (MoveText.Length > 2)
+            {
+                MoveText = MoveText.Remove(2);
+                OnPropertyChanged(nameof(MoveText));
+            }
 
+        }
 
+        public void ResetMoveText(object message)
+        {
+            MoveText = "";
+            OnPropertyChanged(nameof(MoveText));
+            return;
         }
 
         // Greys out selected space on board, and disables the command
@@ -182,7 +205,7 @@ namespace Chess_GUI.ViewModels
             {
                 return true;
             }
-            else if ((string)message == _moveText)
+            else if ((string)message == MoveText)
             {
                 return false;
             }

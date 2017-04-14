@@ -33,7 +33,8 @@ namespace Chess_GUI.ViewModels.Commands
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute(parameter);
+            return true;
+            //return _canExecute == null ? true : _canExecute(parameter);
         }
 
         public void Execute(object parameter)
