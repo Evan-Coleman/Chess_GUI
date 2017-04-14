@@ -15,16 +15,13 @@ namespace Chess_GUI.ViewModels
 {
     public class BoardViewModel : INotifyPropertyChanged
     {
-        // A string that gets built from button clicks on the board
 
-        // Will be set to 1 when King is taken
-        public int WonGame = 0;
+        #region PROPERTIES
+        // Will be set to 1 if game is in a winning state
+        public int WonGame { get; set; }
 
         // Keeps track of who's turn it is
         public bool IsBlacksTurn { get; set; }
-
-        // Not using yet, check
-        //public ObservableCollection<Board> MyBoard { get; private set; }
 
         // Relay command is the general command handler, sets up the MoveCommand
         public RelayCommand MoveCommand { get; private set; }
@@ -40,10 +37,14 @@ namespace Chess_GUI.ViewModels
         // Move list
         public ObservableCollection<string> MovesList { get; set; }
 
+        // Property GUI uses to display who's turn it currently is
         public string WhoTurn => IsBlacksTurn ? "Black's turn" : "White's turn";
 
+        // A string that gets built from button clicks on the board
         public string MoveText { get; set; }
+        #endregion
 
+        #region CONSTRUCTOR
         // CTOR for the viewmodel
         public BoardViewModel()
         {
@@ -66,28 +67,10 @@ namespace Chess_GUI.ViewModels
             ResetMoveTextCommand = new RelayCommand(ResetMoveText, Canexecute);
 
         }
-
-        public void Reset(object message)
-        {
-            // Make a new instance of a board which will have everything in default position
-            Board = new Board();
-            // Need to remove currently selected cell
-            MoveText = "";
-            OnPropertyChanged(nameof(MoveText));
-            // Update GUI with new fresh board
-            OnPropertyChanged(nameof(Board));
-
-            // Creates a new movelist for the new game
-            MovesList = new ObservableCollection<string>();
-            OnPropertyChanged(nameof(MovesList));
+        #endregion
 
 
-            // Game always starts with black first
-            IsBlacksTurn = true;
-            // Notifies GUI who's turn it is
-            OnPropertyChanged(nameof(WhoTurn));
-        }
-
+        #region METHODS
         // Entry point for moves which first validates input, then either passes on to validate move based on piece rules
         // Message is the button text
         public void Move(object message)
@@ -191,28 +174,6 @@ namespace Chess_GUI.ViewModels
 
         }
 
-        public void ResetMoveText(object message)
-        {
-            MoveText = "";
-            OnPropertyChanged(nameof(MoveText));
-            return;
-        }
-
-        // Greys out selected space on board, and disables the command
-        public bool Canexecute(object message)
-        {
-            if (message == null)
-            {
-                return true;
-            }
-            else if ((string)message == MoveText)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         // Checks to see if the input is formatted correctly
         public bool ValidInputCheck(string moveText)
         {
@@ -236,6 +197,53 @@ namespace Chess_GUI.ViewModels
 
         }
 
+        // Resets the game
+        public void Reset(object message)
+        {
+            // Make a new instance of a board which will have everything in default position
+            Board = new Board();
+            // Need to remove currently selected cell
+            MoveText = "";
+            OnPropertyChanged(nameof(MoveText));
+            // Update GUI with new fresh board
+            OnPropertyChanged(nameof(Board));
+
+            // Creates a new movelist for the new game
+            MovesList = new ObservableCollection<string>();
+            OnPropertyChanged(nameof(MovesList));
+
+
+            // Game always starts with black first
+            IsBlacksTurn = true;
+            // Notifies GUI who's turn it is
+            OnPropertyChanged(nameof(WhoTurn));
+        }
+
+        // Will reset the movetext
+        public void ResetMoveText(object message)
+        {
+            MoveText = "";
+            OnPropertyChanged(nameof(MoveText));
+            return;
+        }
+
+        // Greys out selected space on board, and disables the command
+        public bool Canexecute(object message)
+        {
+            if (message == null)
+            {
+                return true;
+            }
+            else if ((string)message == MoveText)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region EVENTS
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -243,5 +251,6 @@ namespace Chess_GUI.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }
