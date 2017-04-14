@@ -54,7 +54,12 @@ namespace Chess_GUI.Models.Pieces
             if (sourceColumn == destColumn)
             {
                 for (int i = sourceRow - 1; i >= destRow; i--)
-                {       // catches for white going up, not black going down
+                {       // White can't capture when moving straight up
+                    if (internalBoard[i][sourceColumn].Piece.Name != '\0')
+                        return 0;
+                }
+                for (int i = sourceRow + 1; i <= destRow; i++)
+                {       // Black can't capture when moving straight down
                     if (internalBoard[i][sourceColumn].Piece.Name != '\0')
                         return 0;
                 }

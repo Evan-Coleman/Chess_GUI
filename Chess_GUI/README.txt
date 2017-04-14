@@ -27,12 +27,12 @@ TODO:
 [x]     Add a move string to Move command which will attempt a move when Length==4
 [x]		Add button to undo selection
 [x]   Migrate piece move logic to new project 
-[x]   Refactor piece logic (Piece works, need to do the rest)
+[x]   Refactor piece logic
 []      Implement promotion dialog && check promotion logic against chess rules
 [x]		Implement INotifyPropertyChanged interface
-[]      Implement move list
-[1/2]   Add reset button (Added, but not functional yet)
-[]      Add turn checking && prevent player from moving opponents pieces
+[x]      Implement move list
+[x]   Add reset button
+[x]      Add turn checking && prevent player from moving opponents pieces
 []      Implement win dialog
 
 WISHLIST (in ascending order of difficulty):
