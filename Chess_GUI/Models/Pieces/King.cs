@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chess_GUI.Models.Pieces
 {
@@ -27,15 +23,17 @@ namespace Chess_GUI.Models.Pieces
                 return 0;
             //catchall errorchecking section
 
-            internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);        // these two actually move the piece
-            internalBoard[destRow][destColumn].Piece = new King(isBlack);
-
             if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] ||
-                internalBoard[destRow][destColumn].Piece.Name == base.King[0]) // check to see if king is taking a king
+    internalBoard[destRow][destColumn].Piece.Name == base.King[1])
             {
-                return 2;
+                TakingKing = true;
             }
-            return 1;
+
+            internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);        // these two actually move the piece
+            internalBoard[destRow][destColumn].Piece = new Queen(isBlack);
+            
+            // Returns 2 if taking a king, 1 if not
+            return TakingKing == true ? 2 : 1;
         }
     }
 }

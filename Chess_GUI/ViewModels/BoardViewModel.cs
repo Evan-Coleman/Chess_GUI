@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Media.Animation;
 using Chess_GUI.Annotations;
 using Chess_GUI.Models;
-using Chess_GUI.Models.Pieces;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
@@ -121,7 +117,6 @@ namespace Chess_GUI.ViewModels
                     // Adds move to list and updates it on GUI
                     MovesList.Insert(0, MoveText);
                     OnPropertyChanged(nameof(MovesList));
-
                     ResetMoveText("");
                 }
                 // LegalMove is 2 when a king is taken, so winning condition goes here
@@ -139,6 +134,8 @@ namespace Chess_GUI.ViewModels
                     // Implement winning dialog HERE
                     // Implement winning dialog HERE
                     // Implement winning dialog HERE
+                    MessageBox.Show("WINNER!");
+
 
                     ResetMoveText("");
                 }
@@ -222,7 +219,7 @@ namespace Chess_GUI.ViewModels
         // Will reset the movetext
         public void ResetMoveText(object message)
         {
-            MoveText = "";
+            MoveText = (string)message;
             OnPropertyChanged(nameof(MoveText));
             return;
         }

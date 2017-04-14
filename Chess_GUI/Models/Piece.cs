@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Chess_GUI.ViewModels;
-
-namespace Chess_GUI.Models
+﻿namespace Chess_GUI.Models
 {
     public abstract class Piece
     {
@@ -35,6 +27,8 @@ namespace Chess_GUI.Models
 
         // True if piece is black
         internal bool IsBlack;
+
+        protected bool TakingKing;
 
         public abstract int LegalMove(Board internalBoard, int initalRow, int initialColumn, int targetRow, int targetColumn);
 

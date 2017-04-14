@@ -32,7 +32,7 @@ TODO:
 [x]     Implement move list
 [x]		Add reset button
 [x]     Add turn checking && prevent player from moving opponents pieces
-[]      Implement win dialog
+[x]      Implement win dialog
 []      Implement promotion dialog
 
 WISHLIST (in ascending order of difficulty):

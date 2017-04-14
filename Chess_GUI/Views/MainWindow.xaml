@@ -53,8 +53,7 @@
         <Button Grid.Row="1"  Grid.Column="9" FontSize="25"
                 Content="{Binding WhoTurn}"></Button>
         <Button x:Name="UndoButton"  Grid.Row="2"  Grid.Column="9" FontSize="25" 
-                Command="{Binding ResetMoveTextCommand}" 
-                CommandParameter="{Binding ElementName=UndoButton, Path=Name}"
+                Command="{Binding ResetMoveTextCommand}"
                 >Undo Selection</Button>
         <TextBlock Grid.Row="3" Grid.Column="9"
                    FontSize="25"

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace Chess_GUI.Models.Pieces
 {
@@ -62,15 +56,17 @@ namespace Chess_GUI.Models.Pieces
             }
             //catchall errorchecking section
 
+            if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] ||
+    internalBoard[destRow][destColumn].Piece.Name == base.King[1])
+            {
+                TakingKing = true;
+            }
+
             internalBoard[sourceRow][sourceColumn].Piece = new EmptyPiece(true);        // these two actually move the piece
             internalBoard[destRow][destColumn].Piece = new Rook(isBlack);
 
-            if (internalBoard[destRow][destColumn].Piece.Name == base.King[0] ||
-                internalBoard[destRow][destColumn].Piece.Name == base.King[1]) // check to see if rook is taking a king
-            {
-                return 2;
-            }
-            return 1;
+            // Returns 2 if taking a king, 1 if not
+            return TakingKing == true ? 2 : 1;
         }
     }
 }
