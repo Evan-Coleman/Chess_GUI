@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using Chess_GUI.Annotations;
 using Chess_GUI.Models;
+using Chess_GUI.Models.Pieces;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
@@ -19,13 +21,17 @@ namespace Chess_GUI.ViewModels
         // Keeps track of who's turn it is
         public bool IsBlacksTurn { get; set; }
 
-        // Relay command is the general command handler, sets up the MoveCommand
+        // Relay command is the general command handler, sets up the Move Command
         public RelayCommand MoveCommand { get; private set; }
 
-        // Relay command is the general command handler, sets up the MoveCommand
+        // Relay command is the general command handler, sets up the Reset Game Command
         public RelayCommand ResetCommand { get; private set; }
 
+        // Relay command is the general command handler, sets up the Reset Move Text Command
         public RelayCommand ResetMoveTextCommand { get; set; }
+
+        // Relay command is the general command handler, sets up the Promote Command
+        public RelayCommand PromoteCommand { get; set; }
 
         // Is the game board
         public Board Board { get; set; }
@@ -38,6 +44,14 @@ namespace Chess_GUI.ViewModels
 
         // A string that gets built from button clicks on the board
         public string MoveText { get; set; }
+
+        // Changes visibility of main window when promoting
+        public string Visibility { get; set; }
+
+        // Changes visibility of promote dialog
+        public string VisibilityPromote { get; set; }
+
+        public string PromoteToPiece { get; set; }
         #endregion
 
         #region CONSTRUCTOR
@@ -46,6 +60,10 @@ namespace Chess_GUI.ViewModels
         {
             // Game starts with black's move
             IsBlacksTurn = true;
+
+            // Board should be visible initially
+            Visibility = "Visible";
+            VisibilityPromote = "Hidden";
 
             // Creates a new instance of the model Board
 
@@ -60,6 +78,7 @@ namespace Chess_GUI.ViewModels
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
             ResetCommand = new RelayCommand(Reset, Canexecute);
+            ResetCommand = new RelayCommand(Promote, Canexecute);
             ResetMoveTextCommand = new RelayCommand(ResetMoveText, Canexecute);
 
         }
@@ -145,6 +164,7 @@ namespace Chess_GUI.ViewModels
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
+                    Piece Promoted = PromotePiece();
 
                     // Move the piece to it's new location in the GUI
                     OnPropertyChanged(nameof(Board));
@@ -237,6 +257,31 @@ namespace Chess_GUI.ViewModels
             }
 
             return true;
+        }
+
+        public async Task<Piece> PromotePiece()
+        {
+            Visibility = "Hidden";
+            OnPropertyChanged(nameof(Visibility));
+            VisibilityPromote = "Visible";
+            OnPropertyChanged(nameof(VisibilityPromote));
+
+            PromoteToPiece = await Promote();
+
+            PromoteToPiece = "";
+
+            return new Pawn(false);
+        }
+
+        public void Promote(object message)
+        {
+            PromoteToPiece = (string)message;
+
+
+            Visibility = "Visible";
+            OnPropertyChanged(nameof(Visibility));
+            VisibilityPromote = "Hidden";
+            OnPropertyChanged(nameof(VisibilityPromote));
         }
         #endregion
 

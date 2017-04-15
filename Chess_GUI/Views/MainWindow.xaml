@@ -23,10 +23,39 @@
     </Window.Resources>
 
 
+    <StackPanel DataContext="{StaticResource BoardViewModel}">
+        
+        <StackPanel Visibility="Visible">
+            <StackPanel>
+                <TextBlock FontSize="30" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="20 150 20 50">Choose which piece to promote your pawn to</TextBlock>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-    <Grid DataContext="{StaticResource BoardViewModel}">
+                <Button x:Name="Queen" Grid.Column="0" FontSize="100"
+                        Command="{Binding PromoteCommand}" 
+                        CommandParameter="{Binding ElementName=C8, Path=Name}">♛</Button>
+                <Button x:Name="Knight" Grid.Column="1" FontSize="100">♞</Button>
+                <Button x:Name="Rook" Grid.Column="2" FontSize="100">♜</Button>
+                <Button x:Name="Bishop" Grid.Column="3" FontSize="100">♝</Button>
+            </Grid>
+        </StackPanel>
+        
+        <!--Main Window to be shown most of the time-->
+<!--        <Grid Visibility="{Binding Visibility}">-->
+        <Grid Visibility="Hidden">
 
-        <Grid.InputBindings>
+            <Grid.InputBindings>
             <KeyBinding x:Name="UndoButtom" Command="{Binding ResetMoveTextCommand}"
               Gesture="CTRL+Z" />
         </Grid.InputBindings>
@@ -507,7 +536,8 @@
         <TextBlock Grid.Row="8" Grid.Column="6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">F</TextBlock>
         <TextBlock Grid.Row="8" Grid.Column="7" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">G</TextBlock>
         <TextBlock Grid.Row="8" Grid.Column="8" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">H</TextBlock>
+       
+
     </Grid>
-
-
+    </StackPanel>
 </Window>
