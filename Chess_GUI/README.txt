@@ -33,7 +33,7 @@ TODO:
 [x]		Add reset button
 [x]     Add turn checking && prevent player from moving opponents pieces
 [x]      Implement win dialog
-[]      Implement promotion dialog
+[1/2]      Implement promotion dialog
 
 WISHLIST (in ascending order of difficulty):
 [x]		Make the GUI pretty (better color scheme)
