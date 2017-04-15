@@ -24,7 +24,7 @@
 
 
     <Grid DataContext="{StaticResource BoardViewModel}">
-        
+
         <!--        Promote Dialog-->
         <StackPanel Visibility="{Binding VisibilityPromote}">
             <StackPanel>
@@ -59,7 +59,7 @@
         </StackPanel>
 
 
-    <!--Main Window to be shown most of the time-->
+        <!--Main Window to be shown most of the time-->
     <Grid Visibility="{Binding Visibility}" >
 
 

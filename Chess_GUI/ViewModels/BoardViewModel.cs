@@ -86,7 +86,6 @@ namespace Chess_GUI.ViewModels
             // Is command sent by the button clicks
             MoveCommand = new RelayCommand(Move, Canexecute);
             ResetCommand = new RelayCommand(Reset, Canexecute);
-            ResetCommand = new RelayCommand(Promote, Canexecute);
             ResetMoveTextCommand = new RelayCommand(ResetMoveText, Canexecute);
             PromoteCommand = new RelayCommand(Promote, Canexecute);
 
@@ -280,6 +279,10 @@ namespace Chess_GUI.ViewModels
 
         public void Promote(object message)
         {
+            if (PromoteColumn == -1 || PromoteRow == -1)
+            {
+                return;
+            }
             PromoteToPiece = (string)message;
 
 
@@ -300,6 +303,8 @@ namespace Chess_GUI.ViewModels
                 Board[PromoteRow][PromoteColumn].Piece = new Knight(Board[PromoteRow][PromoteColumn].Piece.IsBlack);
             }
 
+            PromoteRow = -1;
+            PromoteColumn = -1;
             OnPropertyChanged(nameof(Board));
             Visibility = "Visible";
             OnPropertyChanged(nameof(Visibility));
