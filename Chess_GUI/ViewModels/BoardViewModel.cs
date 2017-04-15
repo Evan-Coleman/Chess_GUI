@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using Chess_GUI.Annotations;
 using Chess_GUI.Models;
+using Chess_GUI.Models.Pieces;
 using Chess_GUI.ViewModels.Commands;
 
 namespace Chess_GUI.ViewModels
@@ -145,6 +146,7 @@ namespace Chess_GUI.ViewModels
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
+                    Board[destRow][destColumn].Piece = new Queen(Board[destRow][destColumn].Piece.IsBlack);
 
                     // Move the piece to it's new location in the GUI
                     OnPropertyChanged(nameof(Board));

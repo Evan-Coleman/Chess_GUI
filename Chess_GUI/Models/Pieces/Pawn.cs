@@ -76,7 +76,7 @@ namespace Chess_GUI.Models.Pieces
                     return 2;
             }
 
-            if (destRow == 1 && isBlack == false || destRow == 8 && isBlack == true)
+            if (destRow == 0 && isBlack == false || destRow == 7 && isBlack == true)
             {       // if a pawn gets to the end will promote it
                 return 3;
             }
