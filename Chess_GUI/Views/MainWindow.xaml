@@ -23,8 +23,46 @@
     </Window.Resources>
 
 
-
     <Grid DataContext="{StaticResource BoardViewModel}">
+
+        <!--        Promote Dialog-->
+        <StackPanel Visibility="{Binding VisibilityPromote}">
+            <StackPanel>
+                <TextBlock FontSize="30" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="20 150 20 50">Choose which piece to promote your pawn to</TextBlock>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="Queen" Grid.Column="0" FontSize="100"
+                        Command="{Binding PromoteCommand}" 
+                        CommandParameter="{Binding ElementName=Queen, Path=Name}">♛</Button>
+                <Button x:Name="Knight" Grid.Column="1" FontSize="100"
+                        Command="{Binding PromoteCommand}" 
+                        CommandParameter="{Binding ElementName=Knight, Path=Name}">♞</Button>
+                <Button x:Name="Rook" Grid.Column="2" FontSize="100"
+                        Command="{Binding PromoteCommand}" 
+                        CommandParameter="{Binding ElementName=Rook, Path=Name}">♜</Button>
+                <Button x:Name="Bishop" Grid.Column="3" FontSize="100"
+                        Command="{Binding PromoteCommand}" 
+                        CommandParameter="{Binding ElementName=Bishop, Path=Name}">♝</Button>
+            </Grid>
+        </StackPanel>
+
+
+        <!--Main Window to be shown most of the time-->
+    <Grid Visibility="{Binding Visibility}" >
+
+
 
         <Grid.InputBindings>
             <KeyBinding x:Name="UndoButtom" Command="{Binding ResetMoveTextCommand}"
@@ -55,6 +93,8 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height=".4*"></RowDefinition>
         </Grid.RowDefinitions>
+
+
 
 
         <!-- Buttons & Moves -->
@@ -507,7 +547,8 @@
         <TextBlock Grid.Row="8" Grid.Column="6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">F</TextBlock>
         <TextBlock Grid.Row="8" Grid.Column="7" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">G</TextBlock>
         <TextBlock Grid.Row="8" Grid.Column="8" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">H</TextBlock>
+
+
     </Grid>
-
-
+    </Grid>
 </Window>
