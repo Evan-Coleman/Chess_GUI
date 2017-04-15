@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using Chess_GUI.Annotations;
 using Chess_GUI.Models;
@@ -20,13 +21,17 @@ namespace Chess_GUI.ViewModels
         // Keeps track of who's turn it is
         public bool IsBlacksTurn { get; set; }
 
-        // Relay command is the general command handler, sets up the MoveCommand
+        // Relay command is the general command handler, sets up the Move Command
         public RelayCommand MoveCommand { get; private set; }
 
-        // Relay command is the general command handler, sets up the MoveCommand
+        // Relay command is the general command handler, sets up the Reset Game Command
         public RelayCommand ResetCommand { get; private set; }
 
+        // Relay command is the general command handler, sets up the Reset Move Text Command
         public RelayCommand ResetMoveTextCommand { get; set; }
+
+        // Relay command is the general command handler, sets up the Promote Command
+        public RelayCommand PromoteCommand { get; set; }
 
         // Is the game board
         public Board Board { get; set; }
@@ -39,6 +44,21 @@ namespace Chess_GUI.ViewModels
 
         // A string that gets built from button clicks on the board
         public string MoveText { get; set; }
+
+        // Changes visibility of main window when promoting
+        public string Visibility { get; set; }
+
+        // Changes visibility of promote dialog
+        public string VisibilityPromote { get; set; }
+
+        // Piece to promote to
+        public string PromoteToPiece { get; set; }
+
+        // Row of piece to promote
+        public int PromoteRow { get; set; }
+
+        // Column of piece to promote
+        public int PromoteColumn { get; set; }
         #endregion
 
         #region CONSTRUCTOR
@@ -47,6 +67,11 @@ namespace Chess_GUI.ViewModels
         {
             // Game starts with black's move
             IsBlacksTurn = true;
+
+            // Board should be visible initially
+            Visibility = "Visible";
+            // Promote dialog should be hidden initially
+            VisibilityPromote = "Collapsed";
 
             // Creates a new instance of the model Board
 
@@ -62,6 +87,7 @@ namespace Chess_GUI.ViewModels
             MoveCommand = new RelayCommand(Move, Canexecute);
             ResetCommand = new RelayCommand(Reset, Canexecute);
             ResetMoveTextCommand = new RelayCommand(ResetMoveText, Canexecute);
+            PromoteCommand = new RelayCommand(Promote, Canexecute);
 
         }
         #endregion
@@ -143,10 +169,12 @@ namespace Chess_GUI.ViewModels
                 // LegalMove is 3 when a pawn makes it to the other side & needs to be promoted
                 if (legalMove == 3)
                 {
+                    PromoteRow = destRow;
+                    PromoteColumn = destColumn;
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
                     // IMPLEMENT PROMOTION HERE
-                    Board[destRow][destColumn].Piece = new Queen(Board[destRow][destColumn].Piece.IsBlack);
+                    PromotePiece();
 
                     // Move the piece to it's new location in the GUI
                     OnPropertyChanged(nameof(Board));
@@ -239,6 +267,49 @@ namespace Chess_GUI.ViewModels
             }
 
             return true;
+        }
+
+        public void PromotePiece()
+        {
+            Visibility = "Collapsed";
+            OnPropertyChanged(nameof(Visibility));
+            VisibilityPromote = "Visible";
+            OnPropertyChanged(nameof(VisibilityPromote));
+        }
+
+        public void Promote(object message)
+        {
+            if (PromoteColumn == -1 || PromoteRow == -1)
+            {
+                return;
+            }
+            PromoteToPiece = (string)message;
+
+
+            if ((string)message == "Queen")
+            {
+                Board[PromoteRow][PromoteColumn].Piece = new Queen(Board[PromoteRow][PromoteColumn].Piece.IsBlack);
+            }
+            else if ((string)message == "Rook")
+            {
+                Board[PromoteRow][PromoteColumn].Piece = new Rook(Board[PromoteRow][PromoteColumn].Piece.IsBlack);
+            }
+            else if ((string)message == "Bishop")
+            {
+                Board[PromoteRow][PromoteColumn].Piece = new Bishop(Board[PromoteRow][PromoteColumn].Piece.IsBlack);
+            }
+            else if ((string)message == "Knight")
+            {
+                Board[PromoteRow][PromoteColumn].Piece = new Knight(Board[PromoteRow][PromoteColumn].Piece.IsBlack);
+            }
+
+            PromoteRow = -1;
+            PromoteColumn = -1;
+            OnPropertyChanged(nameof(Board));
+            Visibility = "Visible";
+            OnPropertyChanged(nameof(Visibility));
+            VisibilityPromote = "Collapsed";
+            OnPropertyChanged(nameof(VisibilityPromote));
         }
         #endregion
 
